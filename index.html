@@ -157,7 +157,6 @@ body{
   border-radius:14px;
   padding:12px;
   min-height:112px;
-  position:relative;
 }
 
 .selector-card h3{
@@ -283,7 +282,7 @@ body{
 }
 
 .motor-card{
-  background:rgba(7,21,37,.94);
+  background:linear-gradient(180deg,#06101d,#020712);
   border:1px solid var(--line);
   border-radius:16px;
   padding:14px;
@@ -292,6 +291,7 @@ body{
   gap:14px;
   min-height:0;
   position:relative;
+  box-shadow:inset 0 0 30px #000a, 0 0 18px #0008;
 }
 
 .motor-title{
@@ -303,65 +303,124 @@ body{
 .motor-title.m1{ color:#38bdf8; }
 .motor-title.m2{ color:#fb923c; }
 
+/* MOTOR VISUAL FIX */
 .motor-img-box{
+  background:
+    radial-gradient(circle at center,#020617 0%,#000 55%,#020617 100%);
+  border:1px solid #11263f;
+  border-radius:18px;
+  min-height:315px;
   display:flex;
   align-items:center;
   justify-content:center;
   position:relative;
-  min-width:0;
+  overflow:hidden;
+  box-shadow:
+    inset 0 0 40px #000,
+    inset 0 0 90px #020617,
+    0 0 18px #0008;
+}
+
+.motor-img-wrap{
+  width:100%;
+  height:100%;
+  min-height:315px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
 }
 
 .motor-img{
-  width:100%;
-  max-width:310px;
+  width:92%;
+  max-width:330px;
   height:auto;
   object-fit:contain;
-  filter:drop-shadow(0 0 18px #000);
+  display:block;
+  filter:
+    drop-shadow(0 0 18px #000)
+    drop-shadow(0 0 10px #0ea5e933);
 }
 
+.motor2 .motor-img{
+  filter:
+    drop-shadow(0 0 18px #000)
+    drop-shadow(0 0 12px #f9731633);
+}
+
+/* NEW FAN STYLE */
 .fan{
   position:absolute;
-  width:96px;
-  height:96px;
+  width:112px;
+  height:112px;
   border-radius:50%;
-  left:50%;
-  top:54%;
+  left:var(--fan-x,50%);
+  top:var(--fan-y,56%);
   transform:translate(-50%,-50%);
-  opacity:.95;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   pointer-events:none;
+  z-index:5;
+  opacity:.95;
 }
 
-.fan::before,
-.fan::after{
-  content:"";
+.fan-core{
   position:absolute;
-  width:16px;
-  height:86px;
-  left:40px;
-  top:5px;
+  width:28px;
+  height:28px;
   border-radius:50%;
-  background:radial-gradient(circle,#fff8,transparent 60%),
-             linear-gradient(180deg,#38bdf8,#0ea5e9);
+  background:radial-gradient(circle,#e0f2fe,#38bdf8 45%,#075985);
+  box-shadow:0 0 18px #38bdf8;
+  z-index:3;
 }
 
-.motor-card.motor2 .fan::before,
-.motor-card.motor2 .fan::after{
-  background:radial-gradient(circle,#fff8,transparent 60%),
-             linear-gradient(180deg,#fb923c,#f97316);
+.motor2 .fan-core{
+  background:radial-gradient(circle,#ffedd5,#fb923c 45%,#9a3412);
+  box-shadow:0 0 18px #fb923c;
 }
 
-.fan::after{
-  transform:rotate(90deg);
+.blade{
+  position:absolute;
+  width:34px;
+  height:70px;
+  background:
+    radial-gradient(circle at 50% 15%,#ffffffcc,transparent 35%),
+    linear-gradient(180deg,#7dd3fc,#0284c7);
+  border-radius:60% 60% 45% 45%;
+  transform-origin:50% 88%;
+  filter:blur(.2px);
+  box-shadow:0 0 12px #38bdf8aa;
+  opacity:.9;
 }
+
+.motor2 .blade{
+  background:
+    radial-gradient(circle at 50% 15%,#ffffffcc,transparent 35%),
+    linear-gradient(180deg,#fdba74,#ea580c);
+  box-shadow:0 0 12px #fb923caa;
+}
+
+.blade.b1{ transform:rotate(0deg) translateY(-25px); }
+.blade.b2{ transform:rotate(120deg) translateY(-25px); }
+.blade.b3{ transform:rotate(240deg) translateY(-25px); }
 
 .running .fan{
-  animation:spin .85s linear infinite;
+  animation:fanSpin .75s linear infinite;
 }
 
-@keyframes spin{
+.running .blade{
+  filter:blur(1.4px);
+}
+
+@keyframes fanSpin{
   from{ transform:translate(-50%,-50%) rotate(0deg); }
   to{ transform:translate(-50%,-50%) rotate(360deg); }
 }
+
+/* adjust center for these uploaded motor images */
+#motor1Card{ --fan-x:50%; --fan-y:58%; }
+#motor2Card{ --fan-x:50%; --fan-y:58%; }
 
 .status-side{
   display:flex;
@@ -446,11 +505,12 @@ body{
 }
 
 .metric-card{
-  background:rgba(7,21,37,.94);
+  background:linear-gradient(180deg,#081827,#050d17);
   border:1px solid var(--line);
   border-radius:14px;
   padding:12px;
   min-width:0;
+  box-shadow:inset 0 0 18px #0008;
 }
 
 .metric-head{
@@ -480,13 +540,14 @@ body{
 
 /* EVENTS */
 .events{
-  background:rgba(7,21,37,.94);
+  background:linear-gradient(180deg,#071525,#040a13);
   border:1px solid var(--line);
   border-radius:16px;
   padding:12px;
   min-height:330px;
   display:flex;
   flex-direction:column;
+  box-shadow:inset 0 0 25px #0008;
 }
 
 .events h3{
@@ -653,8 +714,26 @@ th{
     text-align:center;
   }
 
+  .motor-img-box{
+    min-height:350px;
+  }
+
+  .motor-img-wrap{
+    min-height:350px;
+  }
+
   .motor-img{
-    max-width:260px;
+    max-width:300px;
+  }
+
+  .fan{
+    width:105px;
+    height:105px;
+  }
+
+  .blade{
+    width:30px;
+    height:64px;
   }
 
   .status-side{
@@ -724,8 +803,35 @@ th{
     font-size:32px;
   }
 
+  .motor-img-box{
+    min-height:310px;
+  }
+
+  .motor-img-wrap{
+    min-height:310px;
+  }
+
   .motor-img{
-    max-width:220px;
+    max-width:270px;
+    width:94%;
+  }
+
+  #motor1Card{ --fan-y:58%; }
+  #motor2Card{ --fan-y:58%; }
+
+  .fan{
+    width:96px;
+    height:96px;
+  }
+
+  .blade{
+    width:27px;
+    height:58px;
+  }
+
+  .fan-core{
+    width:25px;
+    height:25px;
   }
 
   th,td{
@@ -838,10 +944,17 @@ th{
 
         <div id="motor1Card" class="motor-card">
           <div class="motor-img-box">
-            <div>
-              <div class="motor-title m1">MOTOR 1</div>
-              <img class="motor-img" src="motor1.png" alt="Motor 1">
-              <div class="fan"></div>
+            <div class="motor-img-wrap">
+              <div>
+                <div class="motor-title m1">MOTOR 1</div>
+                <img class="motor-img" src="motor1.png" alt="Motor 1">
+              </div>
+              <div class="fan">
+                <span class="blade b1"></span>
+                <span class="blade b2"></span>
+                <span class="blade b3"></span>
+                <span class="fan-core"></span>
+              </div>
             </div>
           </div>
 
@@ -871,10 +984,17 @@ th{
 
         <div id="motor2Card" class="motor-card motor2">
           <div class="motor-img-box">
-            <div>
-              <div class="motor-title m2">MOTOR 2</div>
-              <img class="motor-img" src="motor2.png" alt="Motor 2">
-              <div class="fan"></div>
+            <div class="motor-img-wrap">
+              <div>
+                <div class="motor-title m2">MOTOR 2</div>
+                <img class="motor-img" src="motor2.png" alt="Motor 2">
+              </div>
+              <div class="fan">
+                <span class="blade b1"></span>
+                <span class="blade b2"></span>
+                <span class="blade b3"></span>
+                <span class="fan-core"></span>
+              </div>
             </div>
           </div>
 
@@ -1071,7 +1191,6 @@ function $(id){
   return document.getElementById(id);
 }
 
-/* إنشاء المتغيرات تلقائيا إذا لم تكن موجودة */
 async function initDatabase(){
   const mainRef = ref(db, BASE);
   const snap = await get(mainRef);
@@ -1081,7 +1200,6 @@ async function initDatabase(){
     await logEvent("System", "Database initialized automatically", "NORMAL");
   }else{
     const data = snap.val() || {};
-
     const updates = {};
 
     if(!data.control) updates["control"] = defaults.control;
