@@ -299,31 +299,32 @@ body{
   font-size:24px;
   font-weight:900;
   margin-bottom:8px;
+  text-align:center;
 }
 
 .motor-title.m1{ color:#38bdf8; }
 .motor-title.m2{ color:#fb923c; }
 
-/* BLACK MOTOR IMAGE AREA */
+/* MOTOR IMAGE AREA - مناسب للصورتين الجديدتين */
 .motor-img-box{
   background:#000;
-  border:1px solid #0f172a;
+  border:1px solid #05070b;
   border-radius:18px;
-  min-height:315px;
+  min-height:330px;
   display:flex;
   align-items:center;
   justify-content:center;
   position:relative;
   overflow:hidden;
   box-shadow:
-    inset 0 0 35px #000,
+    inset 0 0 45px #000,
     0 0 18px #0008;
 }
 
 .motor-img-wrap{
   width:100%;
   height:100%;
-  min-height:315px;
+  min-height:330px;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -333,31 +334,32 @@ body{
   overflow:hidden;
 }
 
+/* الصور الجديدة */
 .motor-img{
-  width:100%;
+  width:96%;
   max-width:360px;
   height:auto;
   object-fit:contain;
   display:block;
   filter:
-    drop-shadow(0 0 18px #000)
-    drop-shadow(0 0 10px #0ea5e933);
+    drop-shadow(0 0 16px #000)
+    drop-shadow(0 0 10px #0ea5e955);
 }
 
 .motor2 .motor-img{
   filter:
-    drop-shadow(0 0 18px #000)
-    drop-shadow(0 0 12px #f9731633);
+    drop-shadow(0 0 16px #000)
+    drop-shadow(0 0 12px #f9731655);
 }
 
-/* FAN */
+/* FAN STYLE */
 .fan{
   position:absolute;
-  width:112px;
-  height:112px;
+  width:104px;
+  height:104px;
   border-radius:50%;
   left:var(--fan-x,50%);
-  top:var(--fan-y,58%);
+  top:var(--fan-y,60%);
   transform:translate(-50%,-50%);
   display:flex;
   align-items:center;
@@ -369,8 +371,8 @@ body{
 
 .fan-core{
   position:absolute;
-  width:28px;
-  height:28px;
+  width:27px;
+  height:27px;
   border-radius:50%;
   background:radial-gradient(circle,#e0f2fe,#38bdf8 45%,#075985);
   box-shadow:0 0 18px #38bdf8;
@@ -384,8 +386,8 @@ body{
 
 .blade{
   position:absolute;
-  width:34px;
-  height:70px;
+  width:31px;
+  height:64px;
   background:
     radial-gradient(circle at 50% 15%,#ffffffcc,transparent 35%),
     linear-gradient(180deg,#7dd3fc,#0284c7);
@@ -403,16 +405,16 @@ body{
   box-shadow:0 0 12px #fb923caa;
 }
 
-.blade.b1{ transform:rotate(0deg) translateY(-25px); }
-.blade.b2{ transform:rotate(120deg) translateY(-25px); }
-.blade.b3{ transform:rotate(240deg) translateY(-25px); }
+.blade.b1{ transform:rotate(0deg) translateY(-23px); }
+.blade.b2{ transform:rotate(120deg) translateY(-23px); }
+.blade.b3{ transform:rotate(240deg) translateY(-23px); }
 
 .running .fan{
   animation:fanSpin .75s linear infinite;
 }
 
 .running .blade{
-  filter:blur(1.4px);
+  filter:blur(1.3px);
 }
 
 @keyframes fanSpin{
@@ -420,9 +422,9 @@ body{
   to{ transform:translate(-50%,-50%) rotate(360deg); }
 }
 
-/* هنا نعدل لاحقًا مكان المروحتين */
-#motor1Card{ --fan-x:50%; --fan-y:58%; }
-#motor2Card{ --fan-x:50%; --fan-y:58%; }
+/* مكان المروحة مع الصور الجديدة */
+#motor1Card{ --fan-x:50%; --fan-y:60%; }
+#motor2Card{ --fan-x:50%; --fan-y:60%; }
 
 .status-side{
   display:flex;
@@ -796,17 +798,20 @@ th{
   }
 
   .motor-img-box{
-    min-height:310px;
+    min-height:330px;
   }
 
   .motor-img-wrap{
-    min-height:310px;
+    min-height:330px;
   }
 
   .motor-img{
-    max-width:270px;
+    max-width:295px;
     width:100%;
   }
+
+  #motor1Card{ --fan-x:50%; --fan-y:60%; }
+  #motor2Card{ --fan-x:50%; --fan-y:60%; }
 
   .fan{
     width:96px;
@@ -814,7 +819,7 @@ th{
   }
 
   .blade{
-    width:27px;
+    width:28px;
     height:58px;
   }
 
