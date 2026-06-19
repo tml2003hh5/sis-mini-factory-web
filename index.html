@@ -281,8 +281,9 @@ body{
   min-height:0;
 }
 
+/* MOTOR CARD */
 .motor-card{
-  background:linear-gradient(180deg,#06101d,#020712);
+  background:#020617;
   border:1px solid var(--line);
   border-radius:16px;
   padding:14px;
@@ -303,11 +304,10 @@ body{
 .motor-title.m1{ color:#38bdf8; }
 .motor-title.m2{ color:#fb923c; }
 
-/* MOTOR VISUAL FIX */
+/* BLACK MOTOR IMAGE AREA */
 .motor-img-box{
-  background:
-    radial-gradient(circle at center,#020617 0%,#000 55%,#020617 100%);
-  border:1px solid #11263f;
+  background:#000;
+  border:1px solid #0f172a;
   border-radius:18px;
   min-height:315px;
   display:flex;
@@ -316,8 +316,7 @@ body{
   position:relative;
   overflow:hidden;
   box-shadow:
-    inset 0 0 40px #000,
-    inset 0 0 90px #020617,
+    inset 0 0 35px #000,
     0 0 18px #0008;
 }
 
@@ -329,11 +328,14 @@ body{
   align-items:center;
   justify-content:center;
   position:relative;
+  background:#000;
+  border-radius:16px;
+  overflow:hidden;
 }
 
 .motor-img{
-  width:92%;
-  max-width:330px;
+  width:100%;
+  max-width:360px;
   height:auto;
   object-fit:contain;
   display:block;
@@ -348,14 +350,14 @@ body{
     drop-shadow(0 0 12px #f9731633);
 }
 
-/* NEW FAN STYLE */
+/* FAN */
 .fan{
   position:absolute;
   width:112px;
   height:112px;
   border-radius:50%;
   left:var(--fan-x,50%);
-  top:var(--fan-y,56%);
+  top:var(--fan-y,58%);
   transform:translate(-50%,-50%);
   display:flex;
   align-items:center;
@@ -418,7 +420,7 @@ body{
   to{ transform:translate(-50%,-50%) rotate(360deg); }
 }
 
-/* adjust center for these uploaded motor images */
+/* هنا نعدل لاحقًا مكان المروحتين */
 #motor1Card{ --fan-x:50%; --fan-y:58%; }
 #motor2Card{ --fan-x:50%; --fan-y:58%; }
 
@@ -726,16 +728,6 @@ th{
     max-width:300px;
   }
 
-  .fan{
-    width:105px;
-    height:105px;
-  }
-
-  .blade{
-    width:30px;
-    height:64px;
-  }
-
   .status-side{
     width:100%;
   }
@@ -813,11 +805,8 @@ th{
 
   .motor-img{
     max-width:270px;
-    width:94%;
+    width:100%;
   }
-
-  #motor1Card{ --fan-y:58%; }
-  #motor2Card{ --fan-y:58%; }
 
   .fan{
     width:96px;
@@ -949,6 +938,7 @@ th{
                 <div class="motor-title m1">MOTOR 1</div>
                 <img class="motor-img" src="motor1.png" alt="Motor 1">
               </div>
+
               <div class="fan">
                 <span class="blade b1"></span>
                 <span class="blade b2"></span>
@@ -989,6 +979,7 @@ th{
                 <div class="motor-title m2">MOTOR 2</div>
                 <img class="motor-img" src="motor2.png" alt="Motor 2">
               </div>
+
               <div class="fan">
                 <span class="blade b1"></span>
                 <span class="blade b2"></span>
