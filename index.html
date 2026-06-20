@@ -3,15 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>SIS MINI FACTORY</title>
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box}
 
 :root{
   --bg:#020617;
@@ -117,10 +112,10 @@ body{
   box-shadow:0 0 12px #64748b;
 }
 
-.dot.on{ background:var(--green); box-shadow:0 0 14px var(--green); }
-.dot.warn{ background:var(--yellow); box-shadow:0 0 14px var(--yellow); }
-.dot.high{ background:var(--orange); box-shadow:0 0 14px var(--orange); }
-.dot.crit{ background:var(--red); box-shadow:0 0 14px var(--red); }
+.dot.on{background:var(--green);box-shadow:0 0 14px var(--green)}
+.dot.warn{background:var(--yellow);box-shadow:0 0 14px var(--yellow)}
+.dot.high{background:var(--orange);box-shadow:0 0 14px var(--orange)}
+.dot.crit{background:var(--red);box-shadow:0 0 14px var(--red)}
 
 /* MAIN */
 .main{
@@ -241,13 +236,10 @@ body{
   transition:.12s;
 }
 
-.btn:active{
-  transform:scale(.97);
-}
-
-.btn-start{ background:linear-gradient(180deg,#38a83d,#167a22); }
-.btn-stop{ background:linear-gradient(180deg,#ff4b26,#b91c1c); }
-.btn-reset{ background:linear-gradient(180deg,#facc15,#c28100); }
+.btn:active{transform:scale(.97)}
+.btn-start{background:linear-gradient(180deg,#38a83d,#167a22)}
+.btn-stop{background:linear-gradient(180deg,#ff4b26,#b91c1c)}
+.btn-reset{background:linear-gradient(180deg,#facc15,#c28100)}
 
 .small-btns{
   display:grid;
@@ -302,8 +294,8 @@ body{
   text-align:center;
 }
 
-.motor-title.m1{ color:#38bdf8; }
-.motor-title.m2{ color:#fb923c; }
+.motor-title.m1{color:#38bdf8}
+.motor-title.m2{color:#fb923c}
 
 /* IMAGE AREA */
 .motor-img-box{
@@ -316,9 +308,7 @@ body{
   justify-content:center;
   position:relative;
   overflow:hidden;
-  box-shadow:
-    inset 0 0 45px #000,
-    0 0 18px #0008;
+  box-shadow:inset 0 0 45px #000,0 0 18px #0008;
 }
 
 .motor-img-wrap{
@@ -376,11 +366,11 @@ body{
     drop-shadow(0 0 12px #f9731655);
 }
 
-/* FAN IMAGE - ثابتة في المركز والصورة فقط تدور */
+/* FAN IMAGE - تم إنزالها للأسفل */
 .fan-holder{
   position:absolute;
   left:50%;
-  top:var(--fan-y,60.5%);
+  top:var(--fan-y,65%);
   width:var(--fan-size,132px);
   height:var(--fan-size,132px);
   transform:translate(-50%,-50%);
@@ -408,14 +398,14 @@ body{
     drop-shadow(0 0 14px rgba(249,115,22,.28));
 }
 
-/* ضبط مكان وحجم المروحة */
+/* مكان وحجم المروحة */
 #motor1Card{
-  --fan-y:60.5%;
+  --fan-y:65%;
   --fan-size:132px;
 }
 
 #motor2Card{
-  --fan-y:60.5%;
+  --fan-y:65%;
   --fan-size:132px;
 }
 
@@ -424,8 +414,8 @@ body{
 }
 
 @keyframes propSpin{
-  from{ transform:rotate(0deg); }
-  to{ transform:rotate(360deg); }
+  from{transform:rotate(0deg)}
+  to{transform:rotate(360deg)}
 }
 
 .status-side{
@@ -498,10 +488,10 @@ body{
   margin-top:7px;
 }
 
-.level-labels span:nth-child(1){ color:var(--green); }
-.level-labels span:nth-child(2){ color:var(--yellow); }
-.level-labels span:nth-child(3){ color:var(--orange); }
-.level-labels span:nth-child(4){ color:var(--red); }
+.level-labels span:nth-child(1){color:var(--green)}
+.level-labels span:nth-child(2){color:var(--yellow)}
+.level-labels span:nth-child(3){color:var(--orange)}
+.level-labels span:nth-child(4){color:var(--red)}
 
 /* METRICS */
 .metrics{
@@ -543,10 +533,10 @@ body{
   font-weight:900;
 }
 
-.metric-state.normal{ color:var(--green); }
-.metric-state.warning{ color:var(--yellow); }
-.metric-state.high{ color:var(--orange); }
-.metric-state.critical{ color:var(--red); }
+.metric-state.normal{color:var(--green)}
+.metric-state.warning{color:var(--yellow)}
+.metric-state.high{color:var(--orange)}
+.metric-state.critical{color:var(--red)}
 
 /* EVENTS */
 .events{
@@ -589,14 +579,11 @@ th{
   font-size:12px;
 }
 
-.level{
-  font-weight:900;
-}
-
-.level.normal{ color:var(--green); }
-.level.warning{ color:var(--yellow); }
-.level.high{ color:var(--orange); }
-.level.critical{ color:var(--red); }
+.level{font-weight:900}
+.level.normal{color:var(--green)}
+.level.warning{color:var(--yellow)}
+.level.high{color:var(--orange)}
+.level.critical{color:var(--red)}
 
 /* MODAL */
 .modal{
@@ -609,9 +596,7 @@ th{
   z-index:2000;
 }
 
-.modal.show{
-  display:flex;
-}
+.modal.show{display:flex}
 
 .modal-box{
   width:min(520px,90vw);
@@ -666,8 +651,8 @@ th{
   cursor:pointer;
 }
 
-.save{ background:var(--green); color:white; }
-.close{ background:#334155; color:white; }
+.save{background:var(--green);color:white}
+.close{background:#334155;color:white}
 
 /* DANGER MESSAGE */
 .danger-overlay{
@@ -681,9 +666,7 @@ th{
   pointer-events:none;
 }
 
-.danger-overlay.show{
-  display:flex;
-}
+.danger-overlay.show{display:flex}
 
 .danger-box{
   width:min(920px,92vw);
@@ -796,7 +779,7 @@ th{
   .fan-holder{
     width:126px !important;
     height:126px !important;
-    top:60.5%;
+    top:65% !important;
   }
 
   .status-side{
@@ -889,7 +872,7 @@ th{
   .fan-holder{
     width:118px !important;
     height:118px !important;
-    top:60.5%;
+    top:65% !important;
   }
 
   th,td{
