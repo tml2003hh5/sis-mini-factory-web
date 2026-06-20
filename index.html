@@ -305,7 +305,7 @@ body{
 .motor-title.m1{ color:#38bdf8; }
 .motor-title.m2{ color:#fb923c; }
 
-/* MOTOR IMAGE AREA - مناسب للصورتين الجديدتين */
+/* IMAGE AREA */
 .motor-img-box{
   background:#000;
   border:1px solid #05070b;
@@ -334,7 +334,31 @@ body{
   overflow:hidden;
 }
 
-/* الصور الجديدة */
+.motor-visual{
+  width:100%;
+  height:100%;
+  min-height:330px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  background:#000;
+  border-radius:16px;
+  overflow:hidden;
+}
+
+.motor-stack{
+  position:relative;
+  width:100%;
+  height:100%;
+  min-height:330px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  z-index:1;
+}
+
 .motor-img{
   width:96%;
   max-width:360px;
@@ -352,79 +376,39 @@ body{
     drop-shadow(0 0 12px #f9731655);
 }
 
-/* FAN STYLE */
-.fan{
+/* NEW FAN IMAGE */
+.fan-prop{
   position:absolute;
-  width:104px;
-  height:104px;
-  border-radius:50%;
-  left:var(--fan-x,50%);
-  top:var(--fan-y,60%);
+  left:50%;
+  top:59%;
   transform:translate(-50%,-50%);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  pointer-events:none;
+  width:150px;
+  height:150px;
+  object-fit:contain;
   z-index:5;
   opacity:.95;
+  pointer-events:none;
+  filter:drop-shadow(0 0 10px rgba(255,255,255,.35));
 }
 
-.fan-core{
-  position:absolute;
-  width:27px;
-  height:27px;
-  border-radius:50%;
-  background:radial-gradient(circle,#e0f2fe,#38bdf8 45%,#075985);
-  box-shadow:0 0 18px #38bdf8;
-  z-index:3;
+#motor1Card .fan-prop{
+  width:150px;
+  height:150px;
 }
 
-.motor2 .fan-core{
-  background:radial-gradient(circle,#ffedd5,#fb923c 45%,#9a3412);
-  box-shadow:0 0 18px #fb923c;
+#motor2Card .fan-prop{
+  width:150px;
+  height:150px;
 }
 
-.blade{
-  position:absolute;
-  width:31px;
-  height:64px;
-  background:
-    radial-gradient(circle at 50% 15%,#ffffffcc,transparent 35%),
-    linear-gradient(180deg,#7dd3fc,#0284c7);
-  border-radius:60% 60% 45% 45%;
-  transform-origin:50% 88%;
-  filter:blur(.2px);
-  box-shadow:0 0 12px #38bdf8aa;
-  opacity:.9;
+.running .fan-prop{
+  animation:propSpin .75s linear infinite;
 }
 
-.motor2 .blade{
-  background:
-    radial-gradient(circle at 50% 15%,#ffffffcc,transparent 35%),
-    linear-gradient(180deg,#fdba74,#ea580c);
-  box-shadow:0 0 12px #fb923caa;
-}
-
-.blade.b1{ transform:rotate(0deg) translateY(-23px); }
-.blade.b2{ transform:rotate(120deg) translateY(-23px); }
-.blade.b3{ transform:rotate(240deg) translateY(-23px); }
-
-.running .fan{
-  animation:fanSpin .75s linear infinite;
-}
-
-.running .blade{
-  filter:blur(1.3px);
-}
-
-@keyframes fanSpin{
+@keyframes propSpin{
   from{ transform:translate(-50%,-50%) rotate(0deg); }
   to{ transform:translate(-50%,-50%) rotate(360deg); }
 }
-
-/* مكان المروحة مع الصور الجديدة */
-#motor1Card{ --fan-x:50%; --fan-y:60%; }
-#motor2Card{ --fan-x:50%; --fan-y:60%; }
 
 .status-side{
   display:flex;
@@ -539,8 +523,12 @@ body{
   text-align:center;
   margin-top:5px;
   font-weight:900;
-  color:var(--yellow);
 }
+
+.metric-state.normal{ color:var(--green); }
+.metric-state.warning{ color:var(--yellow); }
+.metric-state.high{ color:var(--orange); }
+.metric-state.critical{ color:var(--red); }
 
 /* EVENTS */
 .events{
@@ -562,6 +550,7 @@ body{
 .table-wrap{
   overflow:auto;
   min-height:0;
+  max-height:320px;
 }
 
 table{
@@ -591,7 +580,7 @@ th{
 .level.high{ color:var(--orange); }
 .level.critical{ color:var(--red); }
 
-/* MODAL */
+/* SETTINGS MODAL */
 .modal{
   position:fixed;
   inset:0;
@@ -662,6 +651,63 @@ th{
 .save{ background:var(--green); color:white; }
 .close{ background:#334155; color:white; }
 
+/* DANGER MESSAGE */
+.danger-overlay{
+  position:fixed;
+  inset:0;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  background:rgba(0,0,0,.35);
+  z-index:3000;
+  pointer-events:none;
+}
+
+.danger-overlay.show{
+  display:flex;
+}
+
+.danger-box{
+  width:min(920px,92vw);
+  padding:24px 30px;
+  border-radius:22px;
+  border:3px solid #ff3b30;
+  background:linear-gradient(180deg,rgba(90,0,0,.92),rgba(25,0,0,.95));
+  box-shadow:0 0 35px rgba(255,0,0,.5);
+  text-align:center;
+  animation:alarmBlink 1s infinite;
+}
+
+.danger-title{
+  font-size:28px;
+  font-weight:900;
+  color:#fff;
+  margin-bottom:10px;
+  letter-spacing:1px;
+}
+
+.danger-message{
+  font-size:42px;
+  font-weight:900;
+  color:#ffd9d9;
+  text-transform:uppercase;
+  line-height:1.2;
+  text-shadow:0 0 12px rgba(255,255,255,.25);
+}
+
+@keyframes alarmBlink{
+  0%,100%{
+    opacity:1;
+    transform:scale(1);
+    box-shadow:0 0 35px rgba(255,0,0,.55);
+  }
+  50%{
+    opacity:.55;
+    transform:scale(1.02);
+    box-shadow:0 0 50px rgba(255,120,120,.85);
+  }
+}
+
 /* TABLET / PHONE */
 @media (max-width: 900px){
 
@@ -718,16 +764,21 @@ th{
     text-align:center;
   }
 
-  .motor-img-box{
-    min-height:350px;
-  }
-
-  .motor-img-wrap{
+  .motor-img-box,
+  .motor-img-wrap,
+  .motor-visual,
+  .motor-stack{
     min-height:350px;
   }
 
   .motor-img{
     max-width:300px;
+  }
+
+  .fan-prop{
+    width:135px !important;
+    height:135px !important;
+    top:59%;
   }
 
   .status-side{
@@ -745,6 +796,14 @@ th{
   .table-wrap{
     max-height:300px;
     overflow:auto;
+  }
+
+  .danger-title{
+    font-size:24px;
+  }
+
+  .danger-message{
+    font-size:30px;
   }
 }
 
@@ -797,11 +856,10 @@ th{
     font-size:32px;
   }
 
-  .motor-img-box{
-    min-height:330px;
-  }
-
-  .motor-img-wrap{
+  .motor-img-box,
+  .motor-img-wrap,
+  .motor-visual,
+  .motor-stack{
     min-height:330px;
   }
 
@@ -810,22 +868,10 @@ th{
     width:100%;
   }
 
-  #motor1Card{ --fan-x:50%; --fan-y:60%; }
-  #motor2Card{ --fan-x:50%; --fan-y:60%; }
-
-  .fan{
-    width:96px;
-    height:96px;
-  }
-
-  .blade{
-    width:28px;
-    height:58px;
-  }
-
-  .fan-core{
-    width:25px;
-    height:25px;
+  .fan-prop{
+    width:120px !important;
+    height:120px !important;
+    top:59%;
   }
 
   th,td{
@@ -835,6 +881,18 @@ th{
 
   .input-row{
     grid-template-columns:1fr;
+  }
+
+  .danger-box{
+    padding:18px 16px;
+  }
+
+  .danger-title{
+    font-size:20px;
+  }
+
+  .danger-message{
+    font-size:24px;
   }
 }
 </style>
@@ -939,16 +997,12 @@ th{
         <div id="motor1Card" class="motor-card">
           <div class="motor-img-box">
             <div class="motor-img-wrap">
-              <div>
-                <div class="motor-title m1">MOTOR 1</div>
-                <img class="motor-img" src="motor1.png" alt="Motor 1">
-              </div>
-
-              <div class="fan">
-                <span class="blade b1"></span>
-                <span class="blade b2"></span>
-                <span class="blade b3"></span>
-                <span class="fan-core"></span>
+              <div class="motor-visual">
+                <div class="motor-stack">
+                  <div class="motor-title m1">MOTOR 1</div>
+                  <img class="motor-img" src="motor1.png" alt="Motor 1">
+                </div>
+                <img class="fan-prop" src="fan.png" alt="Fan">
               </div>
             </div>
           </div>
@@ -980,16 +1034,12 @@ th{
         <div id="motor2Card" class="motor-card motor2">
           <div class="motor-img-box">
             <div class="motor-img-wrap">
-              <div>
-                <div class="motor-title m2">MOTOR 2</div>
-                <img class="motor-img" src="motor2.png" alt="Motor 2">
-              </div>
-
-              <div class="fan">
-                <span class="blade b1"></span>
-                <span class="blade b2"></span>
-                <span class="blade b3"></span>
-                <span class="fan-core"></span>
+              <div class="motor-visual">
+                <div class="motor-stack">
+                  <div class="motor-title m2">MOTOR 2</div>
+                  <img class="motor-img" src="motor2.png" alt="Motor 2">
+                </div>
+                <img class="fan-prop" src="fan.png" alt="Fan">
               </div>
             </div>
           </div>
@@ -1036,39 +1086,39 @@ th{
           <div class="metric-head">MOTOR 1<br>TEMPERATURE</div>
           <div class="metric-value"><span id="cardTempM1">--</span><span class="metric-unit"> °C</span></div>
           <div class="level-bar"><div id="cardTempM1Pointer" class="pointer"></div></div>
-          <div id="cardTempM1State" class="metric-state">NORMAL</div>
+          <div id="cardTempM1State" class="metric-state normal">NORMAL</div>
         </div>
 
         <div class="metric-card">
           <div class="metric-head">MOTOR 2<br>TEMPERATURE</div>
           <div class="metric-value"><span id="cardTempM2">--</span><span class="metric-unit"> °C</span></div>
           <div class="level-bar"><div id="cardTempM2Pointer" class="pointer"></div></div>
-          <div id="cardTempM2State" class="metric-state">NORMAL</div>
+          <div id="cardTempM2State" class="metric-state normal">NORMAL</div>
         </div>
 
         <div class="metric-card">
           <div class="metric-head">MOTOR 2<br>HUMIDITY</div>
           <div class="metric-value"><span id="cardHumM2">--</span><span class="metric-unit"> %</span></div>
           <div class="level-bar"><div id="cardHumM2Pointer" class="pointer"></div></div>
-          <div id="cardHumM2State" class="metric-state">NORMAL</div>
+          <div id="cardHumM2State" class="metric-state normal">NORMAL</div>
         </div>
 
         <div class="metric-card">
           <div class="metric-head">TEMP LIMIT 1<br>(MOTOR 1)</div>
           <div class="metric-value"><span id="limitTempM1View">--</span><span class="metric-unit"> °C</span></div>
-          <div class="metric-state">LIMIT</div>
+          <div class="metric-state warning">LIMIT</div>
         </div>
 
         <div class="metric-card">
           <div class="metric-head">TEMP LIMIT 2<br>(MOTOR 2)</div>
           <div class="metric-value"><span id="limitTempM2View">--</span><span class="metric-unit"> °C</span></div>
-          <div class="metric-state">LIMIT</div>
+          <div class="metric-state warning">LIMIT</div>
         </div>
 
         <div class="metric-card">
           <div class="metric-head">HUMIDITY LIMIT<br>(MOTOR 2)</div>
           <div class="metric-value"><span id="limitHumM2View">--</span><span class="metric-unit"> %</span></div>
-          <div class="metric-state">LIMIT</div>
+          <div class="metric-state warning">LIMIT</div>
         </div>
       </div>
 
@@ -1094,6 +1144,15 @@ th{
   </main>
 </div>
 
+<!-- Danger Overlay -->
+<div id="dangerOverlay" class="danger-overlay">
+  <div class="danger-box">
+    <div class="danger-title">⚠ ACTIVE ALARM</div>
+    <div id="dangerMessage" class="danger-message">FAULT</div>
+  </div>
+</div>
+
+<!-- Settings -->
 <div id="settingsModal" class="modal">
   <div class="modal-box">
     <h2>Limits Settings</h2>
@@ -1122,7 +1181,6 @@ th{
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
-
 import {
   getDatabase,
   ref,
@@ -1239,7 +1297,6 @@ function updateClock(){
   const d = new Date();
 
   $("clock").textContent = d.toLocaleTimeString("en-GB");
-
   $("date").textContent = d.toLocaleDateString("en-GB", {
     day:"2-digit",
     month:"short",
@@ -1323,6 +1380,25 @@ window.clearEvents = async function(){
   await logEvent("System", "Events cleared", "NORMAL");
 };
 
+function updateDangerMessage(feedback, faults){
+  const overlay = $("dangerOverlay");
+  const msgEl = $("dangerMessage");
+
+  let msg = "NORMAL";
+  let active = false;
+
+  if(faults && faults.message && faults.message !== "NORMAL"){
+    msg = faults.message;
+    active = true;
+  }else if(feedback && feedback.fault){
+    msg = "PLC FAULT ACTIVE";
+    active = true;
+  }
+
+  msgEl.textContent = msg;
+  overlay.classList.toggle("show", active);
+}
+
 function updateUI(){
   const c = state.control;
   const s = state.sensors;
@@ -1353,8 +1429,19 @@ function updateUI(){
   $("m1RunText").textContent = f.m1Run ? "RUN" : "STOP";
   $("m2RunText").textContent = f.m2Run ? "RUN" : "STOP";
 
-  $("sysDot").className = "dot " + (!f.fault ? "on" : "crit");
-  $("systemStatus").textContent = f.fault ? "FAULT" : "NORMAL";
+  let sysClass = "on";
+  let sysText = "NORMAL";
+
+  if(faults.message && faults.message !== "NORMAL"){
+    sysClass = "crit";
+    sysText = faults.message;
+  }else if(f.fault){
+    sysClass = "crit";
+    sysText = "PLC FAULT";
+  }
+
+  $("sysDot").className = "dot " + sysClass;
+  $("systemStatus").textContent = sysText;
 
   $("tempM1").textContent = Number(s.tempM1 || 0).toFixed(1);
   $("tempM2").textContent = Number(s.tempM2 || 0).toFixed(1);
@@ -1393,6 +1480,8 @@ function updateUI(){
 
   $("faultM2Text").textContent = faults.faultM2 ? "FAULT" : "NO FAULT";
   $("faultM2Text").style.color = faults.faultM2 ? "var(--red)" : "#67ff5a";
+
+  updateDangerMessage(f, faults);
 }
 
 onValue(ref(db, BASE), snap => {
@@ -1409,7 +1498,7 @@ onValue(ref(db, BASE), snap => {
   updateUI();
 });
 
-const eventsQuery = query(ref(db, `${BASE}/events`), limitToLast(30));
+const eventsQuery = query(ref(db, `${BASE}/events`), limitToLast(50));
 
 onValue(eventsQuery, snap => {
   const rows = [];
@@ -1437,4 +1526,4 @@ initDatabase();
 </script>
 
 </body>
-            </html>
+</html>
