@@ -366,10 +366,10 @@ body{
     drop-shadow(0 0 12px #f9731655);
 }
 
-/* FAN IMAGE - تم إنزالها للأسفل */
+/* FAN IMAGE - إزاحة خفيفة لليسار */
 .fan-holder{
   position:absolute;
-  left:50%;
+  left:var(--fan-x,48%);
   top:var(--fan-y,65%);
   width:var(--fan-size,132px);
   height:var(--fan-size,132px);
@@ -400,11 +400,13 @@ body{
 
 /* مكان وحجم المروحة */
 #motor1Card{
+  --fan-x:48%;
   --fan-y:65%;
   --fan-size:132px;
 }
 
 #motor2Card{
+  --fan-x:48%;
   --fan-y:65%;
   --fan-size:132px;
 }
@@ -779,6 +781,7 @@ th{
   .fan-holder{
     width:126px !important;
     height:126px !important;
+    left:48% !important;
     top:65% !important;
   }
 
@@ -872,6 +875,7 @@ th{
   .fan-holder{
     width:118px !important;
     height:118px !important;
+    left:48% !important;
     top:65% !important;
   }
 
