@@ -376,38 +376,56 @@ body{
     drop-shadow(0 0 12px #f9731655);
 }
 
-/* NEW FAN IMAGE */
-.fan-prop{
+/* FAN IMAGE - ثابتة في المركز والصورة فقط تدور */
+.fan-holder{
   position:absolute;
   left:50%;
-  top:59%;
+  top:var(--fan-y,60.5%);
+  width:var(--fan-size,132px);
+  height:var(--fan-size,132px);
   transform:translate(-50%,-50%);
-  width:150px;
-  height:150px;
-  object-fit:contain;
   z-index:5;
-  opacity:.95;
   pointer-events:none;
-  filter:drop-shadow(0 0 10px rgba(255,255,255,.35));
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
-#motor1Card .fan-prop{
-  width:150px;
-  height:150px;
+.fan-prop{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  opacity:.96;
+  transform-origin:50% 50%;
+  filter:
+    drop-shadow(0 0 10px rgba(255,255,255,.38))
+    drop-shadow(0 0 14px rgba(56,189,248,.25));
 }
 
-#motor2Card .fan-prop{
-  width:150px;
-  height:150px;
+.motor2 .fan-prop{
+  filter:
+    drop-shadow(0 0 10px rgba(255,255,255,.38))
+    drop-shadow(0 0 14px rgba(249,115,22,.28));
+}
+
+/* ضبط مكان وحجم المروحة */
+#motor1Card{
+  --fan-y:60.5%;
+  --fan-size:132px;
+}
+
+#motor2Card{
+  --fan-y:60.5%;
+  --fan-size:132px;
 }
 
 .running .fan-prop{
-  animation:propSpin .75s linear infinite;
+  animation:propSpin .65s linear infinite;
 }
 
 @keyframes propSpin{
-  from{ transform:translate(-50%,-50%) rotate(0deg); }
-  to{ transform:translate(-50%,-50%) rotate(360deg); }
+  from{ transform:rotate(0deg); }
+  to{ transform:rotate(360deg); }
 }
 
 .status-side{
@@ -580,7 +598,7 @@ th{
 .level.high{ color:var(--orange); }
 .level.critical{ color:var(--red); }
 
-/* SETTINGS MODAL */
+/* MODAL */
 .modal{
   position:fixed;
   inset:0;
@@ -775,10 +793,10 @@ th{
     max-width:300px;
   }
 
-  .fan-prop{
-    width:135px !important;
-    height:135px !important;
-    top:59%;
+  .fan-holder{
+    width:126px !important;
+    height:126px !important;
+    top:60.5%;
   }
 
   .status-side{
@@ -868,10 +886,10 @@ th{
     width:100%;
   }
 
-  .fan-prop{
-    width:120px !important;
-    height:120px !important;
-    top:59%;
+  .fan-holder{
+    width:118px !important;
+    height:118px !important;
+    top:60.5%;
   }
 
   th,td{
@@ -1002,7 +1020,10 @@ th{
                   <div class="motor-title m1">MOTOR 1</div>
                   <img class="motor-img" src="motor1.png" alt="Motor 1">
                 </div>
-                <img class="fan-prop" src="fan.png" alt="Fan">
+
+                <div class="fan-holder">
+                  <img class="fan-prop" src="fan.png" alt="Fan">
+                </div>
               </div>
             </div>
           </div>
@@ -1039,7 +1060,10 @@ th{
                   <div class="motor-title m2">MOTOR 2</div>
                   <img class="motor-img" src="motor2.png" alt="Motor 2">
                 </div>
-                <img class="fan-prop" src="fan.png" alt="Fan">
+
+                <div class="fan-holder">
+                  <img class="fan-prop" src="fan.png" alt="Fan">
+                </div>
               </div>
             </div>
           </div>
@@ -1144,7 +1168,6 @@ th{
   </main>
 </div>
 
-<!-- Danger Overlay -->
 <div id="dangerOverlay" class="danger-overlay">
   <div class="danger-box">
     <div class="danger-title">⚠ ACTIVE ALARM</div>
@@ -1152,7 +1175,6 @@ th{
   </div>
 </div>
 
-<!-- Settings -->
 <div id="settingsModal" class="modal">
   <div class="modal-box">
     <h2>Limits Settings</h2>
@@ -1181,6 +1203,7 @@ th{
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
+
 import {
   getDatabase,
   ref,
@@ -1297,6 +1320,7 @@ function updateClock(){
   const d = new Date();
 
   $("clock").textContent = d.toLocaleTimeString("en-GB");
+
   $("date").textContent = d.toLocaleDateString("en-GB", {
     day:"2-digit",
     month:"short",
