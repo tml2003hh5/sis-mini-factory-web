@@ -3,10 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>SIS MINI FACTORY</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
 :root{
   --bg:#020617;
@@ -112,10 +117,10 @@ body{
   box-shadow:0 0 12px #64748b;
 }
 
-.dot.on{background:var(--green);box-shadow:0 0 14px var(--green)}
-.dot.warn{background:var(--yellow);box-shadow:0 0 14px var(--yellow)}
-.dot.high{background:var(--orange);box-shadow:0 0 14px var(--orange)}
-.dot.crit{background:var(--red);box-shadow:0 0 14px var(--red)}
+.dot.on{ background:var(--green); box-shadow:0 0 14px var(--green); }
+.dot.warn{ background:var(--yellow); box-shadow:0 0 14px var(--yellow); }
+.dot.high{ background:var(--orange); box-shadow:0 0 14px var(--orange); }
+.dot.crit{ background:var(--red); box-shadow:0 0 14px var(--red); }
 
 /* MAIN */
 .main{
@@ -236,10 +241,13 @@ body{
   transition:.12s;
 }
 
-.btn:active{transform:scale(.97)}
-.btn-start{background:linear-gradient(180deg,#38a83d,#167a22)}
-.btn-stop{background:linear-gradient(180deg,#ff4b26,#b91c1c)}
-.btn-reset{background:linear-gradient(180deg,#facc15,#c28100)}
+.btn:active{
+  transform:scale(.97);
+}
+
+.btn-start{ background:linear-gradient(180deg,#38a83d,#167a22); }
+.btn-stop{ background:linear-gradient(180deg,#ff4b26,#b91c1c); }
+.btn-reset{ background:linear-gradient(180deg,#facc15,#c28100); }
 
 .small-btns{
   display:grid;
@@ -294,10 +302,9 @@ body{
   text-align:center;
 }
 
-.motor-title.m1{color:#38bdf8}
-.motor-title.m2{color:#fb923c}
+.motor-title.m1{ color:#38bdf8; }
+.motor-title.m2{ color:#fb923c; }
 
-/* IMAGE AREA */
 .motor-img-box{
   background:#000;
   border:1px solid #05070b;
@@ -308,7 +315,7 @@ body{
   justify-content:center;
   position:relative;
   overflow:hidden;
-  box-shadow:inset 0 0 45px #000,0 0 18px #0008;
+  box-shadow:inset 0 0 45px #000, 0 0 18px #0008;
 }
 
 .motor-img-wrap{
@@ -322,31 +329,6 @@ body{
   background:#000;
   border-radius:16px;
   overflow:hidden;
-}
-
-.motor-visual{
-  width:100%;
-  height:100%;
-  min-height:330px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  position:relative;
-  background:#000;
-  border-radius:16px;
-  overflow:hidden;
-}
-
-.motor-stack{
-  position:relative;
-  width:100%;
-  height:100%;
-  min-height:330px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-  z-index:1;
 }
 
 .motor-img{
@@ -366,58 +348,49 @@ body{
     drop-shadow(0 0 12px #f9731655);
 }
 
-/* FAN IMAGE - إزاحة خفيفة لليسار */
-.fan-holder{
-  position:absolute;
-  left:var(--fan-x,48%);
-  top:var(--fan-y,65%);
-  width:var(--fan-size,132px);
-  height:var(--fan-size,132px);
-  transform:translate(-50%,-50%);
-  z-index:5;
-  pointer-events:none;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.fan-prop{
-  width:100%;
-  height:100%;
-  object-fit:contain;
-  opacity:.96;
-  transform-origin:50% 50%;
-  filter:
-    drop-shadow(0 0 10px rgba(255,255,255,.38))
-    drop-shadow(0 0 14px rgba(56,189,248,.25));
-}
-
-.motor2 .fan-prop{
-  filter:
-    drop-shadow(0 0 10px rgba(255,255,255,.38))
-    drop-shadow(0 0 14px rgba(249,115,22,.28));
-}
-
-/* مكان وحجم المروحة */
+/* ===== FAN IMAGE HOLDER ===== */
 #motor1Card{
-  --fan-x:48%;
+  --fan-x:49%;
   --fan-y:65%;
-  --fan-size:132px;
+  --fan-size:148px;
 }
 
 #motor2Card{
-  --fan-x:48%;
+  --fan-x:49%;
   --fan-y:65%;
-  --fan-size:132px;
+  --fan-size:148px;
 }
 
-.running .fan-prop{
-  animation:propSpin .65s linear infinite;
+.fan-holder{
+  position:absolute;
+  left:var(--fan-x);
+  top:var(--fan-y);
+  width:var(--fan-size);
+  height:var(--fan-size);
+  transform:translate(-50%,-50%);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:8;
+  pointer-events:none;
 }
 
-@keyframes propSpin{
-  from{transform:rotate(0deg)}
-  to{transform:rotate(360deg)}
+.fan-img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+  filter:drop-shadow(0 0 16px rgba(255,255,255,.20));
+  transform-origin:50% 50%;
+}
+
+.running .fan-img{
+  animation:fanSpin 1.1s linear infinite;
+}
+
+@keyframes fanSpin{
+  from{ transform:rotate(0deg); }
+  to{ transform:rotate(360deg); }
 }
 
 .status-side{
@@ -490,10 +463,10 @@ body{
   margin-top:7px;
 }
 
-.level-labels span:nth-child(1){color:var(--green)}
-.level-labels span:nth-child(2){color:var(--yellow)}
-.level-labels span:nth-child(3){color:var(--orange)}
-.level-labels span:nth-child(4){color:var(--red)}
+.level-labels span:nth-child(1){ color:var(--green); }
+.level-labels span:nth-child(2){ color:var(--yellow); }
+.level-labels span:nth-child(3){ color:var(--orange); }
+.level-labels span:nth-child(4){ color:var(--red); }
 
 /* METRICS */
 .metrics{
@@ -535,10 +508,10 @@ body{
   font-weight:900;
 }
 
-.metric-state.normal{color:var(--green)}
-.metric-state.warning{color:var(--yellow)}
-.metric-state.high{color:var(--orange)}
-.metric-state.critical{color:var(--red)}
+.metric-state.normal{ color:var(--green); }
+.metric-state.warning{ color:var(--yellow); }
+.metric-state.high{ color:var(--orange); }
+.metric-state.critical{ color:var(--red); }
 
 /* EVENTS */
 .events{
@@ -560,7 +533,6 @@ body{
 .table-wrap{
   overflow:auto;
   min-height:0;
-  max-height:320px;
 }
 
 table{
@@ -581,11 +553,14 @@ th{
   font-size:12px;
 }
 
-.level{font-weight:900}
-.level.normal{color:var(--green)}
-.level.warning{color:var(--yellow)}
-.level.high{color:var(--orange)}
-.level.critical{color:var(--red)}
+.level{
+  font-weight:900;
+}
+
+.level.normal{ color:var(--green); }
+.level.warning{ color:var(--yellow); }
+.level.high{ color:var(--orange); }
+.level.critical{ color:var(--red); }
 
 /* MODAL */
 .modal{
@@ -598,7 +573,9 @@ th{
   z-index:2000;
 }
 
-.modal.show{display:flex}
+.modal.show{
+  display:flex;
+}
 
 .modal-box{
   width:min(520px,90vw);
@@ -653,63 +630,8 @@ th{
   cursor:pointer;
 }
 
-.save{background:var(--green);color:white}
-.close{background:#334155;color:white}
-
-/* DANGER MESSAGE */
-.danger-overlay{
-  position:fixed;
-  inset:0;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  background:rgba(0,0,0,.35);
-  z-index:3000;
-  pointer-events:none;
-}
-
-.danger-overlay.show{display:flex}
-
-.danger-box{
-  width:min(920px,92vw);
-  padding:24px 30px;
-  border-radius:22px;
-  border:3px solid #ff3b30;
-  background:linear-gradient(180deg,rgba(90,0,0,.92),rgba(25,0,0,.95));
-  box-shadow:0 0 35px rgba(255,0,0,.5);
-  text-align:center;
-  animation:alarmBlink 1s infinite;
-}
-
-.danger-title{
-  font-size:28px;
-  font-weight:900;
-  color:#fff;
-  margin-bottom:10px;
-  letter-spacing:1px;
-}
-
-.danger-message{
-  font-size:42px;
-  font-weight:900;
-  color:#ffd9d9;
-  text-transform:uppercase;
-  line-height:1.2;
-  text-shadow:0 0 12px rgba(255,255,255,.25);
-}
-
-@keyframes alarmBlink{
-  0%,100%{
-    opacity:1;
-    transform:scale(1);
-    box-shadow:0 0 35px rgba(255,0,0,.55);
-  }
-  50%{
-    opacity:.55;
-    transform:scale(1.02);
-    box-shadow:0 0 50px rgba(255,120,120,.85);
-  }
-}
+.save{ background:var(--green); color:white; }
+.close{ background:#334155; color:white; }
 
 /* TABLET / PHONE */
 @media (max-width: 900px){
@@ -767,22 +689,16 @@ th{
     text-align:center;
   }
 
-  .motor-img-box,
-  .motor-img-wrap,
-  .motor-visual,
-  .motor-stack{
+  .motor-img-box{
+    min-height:350px;
+  }
+
+  .motor-img-wrap{
     min-height:350px;
   }
 
   .motor-img{
     max-width:300px;
-  }
-
-  .fan-holder{
-    width:126px !important;
-    height:126px !important;
-    left:48% !important;
-    top:65% !important;
   }
 
   .status-side{
@@ -802,12 +718,16 @@ th{
     overflow:auto;
   }
 
-  .danger-title{
-    font-size:24px;
+  #motor1Card{
+    --fan-x:49%;
+    --fan-y:65%;
+    --fan-size:138px;
   }
 
-  .danger-message{
-    font-size:30px;
+  #motor2Card{
+    --fan-x:49%;
+    --fan-y:65%;
+    --fan-size:138px;
   }
 }
 
@@ -860,10 +780,11 @@ th{
     font-size:32px;
   }
 
-  .motor-img-box,
-  .motor-img-wrap,
-  .motor-visual,
-  .motor-stack{
+  .motor-img-box{
+    min-height:330px;
+  }
+
+  .motor-img-wrap{
     min-height:330px;
   }
 
@@ -872,11 +793,16 @@ th{
     width:100%;
   }
 
-  .fan-holder{
-    width:118px !important;
-    height:118px !important;
-    left:48% !important;
-    top:65% !important;
+  #motor1Card{
+    --fan-x:49%;
+    --fan-y:65%;
+    --fan-size:132px;
+  }
+
+  #motor2Card{
+    --fan-x:49%;
+    --fan-y:65%;
+    --fan-size:132px;
   }
 
   th,td{
@@ -886,18 +812,6 @@ th{
 
   .input-row{
     grid-template-columns:1fr;
-  }
-
-  .danger-box{
-    padding:18px 16px;
-  }
-
-  .danger-title{
-    font-size:20px;
-  }
-
-  .danger-message{
-    font-size:24px;
   }
 }
 </style>
@@ -1002,15 +916,13 @@ th{
         <div id="motor1Card" class="motor-card">
           <div class="motor-img-box">
             <div class="motor-img-wrap">
-              <div class="motor-visual">
-                <div class="motor-stack">
-                  <div class="motor-title m1">MOTOR 1</div>
-                  <img class="motor-img" src="motor1.png" alt="Motor 1">
-                </div>
+              <div>
+                <div class="motor-title m1">MOTOR 1</div>
+                <img class="motor-img" src="motor1.png" alt="Motor 1">
+              </div>
 
-                <div class="fan-holder">
-                  <img class="fan-prop" src="fan.png" alt="Fan">
-                </div>
+              <div class="fan-holder">
+                <img class="fan-img" src="fan.png" alt="Fan 1">
               </div>
             </div>
           </div>
@@ -1042,15 +954,13 @@ th{
         <div id="motor2Card" class="motor-card motor2">
           <div class="motor-img-box">
             <div class="motor-img-wrap">
-              <div class="motor-visual">
-                <div class="motor-stack">
-                  <div class="motor-title m2">MOTOR 2</div>
-                  <img class="motor-img" src="motor2.png" alt="Motor 2">
-                </div>
+              <div>
+                <div class="motor-title m2">MOTOR 2</div>
+                <img class="motor-img" src="motor2.png" alt="Motor 2">
+              </div>
 
-                <div class="fan-holder">
-                  <img class="fan-prop" src="fan.png" alt="Fan">
-                </div>
+              <div class="fan-holder">
+                <img class="fan-img" src="fan.png" alt="Fan 2">
               </div>
             </div>
           </div>
@@ -1155,13 +1065,6 @@ th{
   </main>
 </div>
 
-<div id="dangerOverlay" class="danger-overlay">
-  <div class="danger-box">
-    <div class="danger-title">⚠ ACTIVE ALARM</div>
-    <div id="dangerMessage" class="danger-message">FAULT</div>
-  </div>
-</div>
-
 <div id="settingsModal" class="modal">
   <div class="modal-box">
     <h2>Limits Settings</h2>
@@ -1190,7 +1093,6 @@ th{
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
-
 import {
   getDatabase,
   ref,
@@ -1215,7 +1117,6 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
-
 const BASE = "sisMiniFactory";
 
 const defaults = {
@@ -1305,9 +1206,7 @@ function setPointer(id, pos){
 
 function updateClock(){
   const d = new Date();
-
   $("clock").textContent = d.toLocaleTimeString("en-GB");
-
   $("date").textContent = d.toLocaleDateString("en-GB", {
     day:"2-digit",
     month:"short",
@@ -1391,25 +1290,6 @@ window.clearEvents = async function(){
   await logEvent("System", "Events cleared", "NORMAL");
 };
 
-function updateDangerMessage(feedback, faults){
-  const overlay = $("dangerOverlay");
-  const msgEl = $("dangerMessage");
-
-  let msg = "NORMAL";
-  let active = false;
-
-  if(faults && faults.message && faults.message !== "NORMAL"){
-    msg = faults.message;
-    active = true;
-  }else if(feedback && feedback.fault){
-    msg = "PLC FAULT ACTIVE";
-    active = true;
-  }
-
-  msgEl.textContent = msg;
-  overlay.classList.toggle("show", active);
-}
-
 function updateUI(){
   const c = state.control;
   const s = state.sensors;
@@ -1440,19 +1320,8 @@ function updateUI(){
   $("m1RunText").textContent = f.m1Run ? "RUN" : "STOP";
   $("m2RunText").textContent = f.m2Run ? "RUN" : "STOP";
 
-  let sysClass = "on";
-  let sysText = "NORMAL";
-
-  if(faults.message && faults.message !== "NORMAL"){
-    sysClass = "crit";
-    sysText = faults.message;
-  }else if(f.fault){
-    sysClass = "crit";
-    sysText = "PLC FAULT";
-  }
-
-  $("sysDot").className = "dot " + sysClass;
-  $("systemStatus").textContent = sysText;
+  $("sysDot").className = "dot " + (!f.fault ? "on" : "crit");
+  $("systemStatus").textContent = f.fault ? "FAULT" : "NORMAL";
 
   $("tempM1").textContent = Number(s.tempM1 || 0).toFixed(1);
   $("tempM2").textContent = Number(s.tempM2 || 0).toFixed(1);
@@ -1491,8 +1360,6 @@ function updateUI(){
 
   $("faultM2Text").textContent = faults.faultM2 ? "FAULT" : "NO FAULT";
   $("faultM2Text").style.color = faults.faultM2 ? "var(--red)" : "#67ff5a";
-
-  updateDangerMessage(f, faults);
 }
 
 onValue(ref(db, BASE), snap => {
@@ -1509,13 +1376,11 @@ onValue(ref(db, BASE), snap => {
   updateUI();
 });
 
-const eventsQuery = query(ref(db, `${BASE}/events`), limitToLast(50));
+const eventsQuery = query(ref(db, `${BASE}/events`), limitToLast(30));
 
 onValue(eventsQuery, snap => {
   const rows = [];
-
   snap.forEach(child => rows.push(child.val()));
-
   rows.sort((a,b)=>(b.timestamp||0)-(a.timestamp||0));
 
   $("eventsBody").innerHTML = rows.map(e => {
