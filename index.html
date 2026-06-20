@@ -3,6 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+
 <title>SIS MINI FACTORY</title>
 
 <style>
@@ -43,10 +48,9 @@ body{
   gap:12px;
 }
 
-/* HEADER */
 .header{
   display:grid;
-  grid-template-columns:1fr auto auto auto;
+  grid-template-columns:1fr auto auto auto auto;
   gap:14px;
   align-items:center;
   background:rgba(7,21,37,.92);
@@ -84,7 +88,7 @@ body{
 
 .top-card{
   min-width:170px;
-  height:52px;
+  height:58px;
   border:1px solid var(--line);
   background:#0b1b2e;
   border-radius:10px;
@@ -97,6 +101,7 @@ body{
 .top-card small{
   color:#94a3b8;
   font-size:11px;
+  display:block;
 }
 
 .top-card strong{
@@ -117,7 +122,6 @@ body{
 .dot.high{background:var(--orange);box-shadow:0 0 14px var(--orange)}
 .dot.crit{background:var(--red);box-shadow:0 0 14px var(--red)}
 
-/* MAIN */
 .main{
   display:grid;
   grid-template-columns:340px 1fr;
@@ -125,7 +129,6 @@ body{
   min-height:0;
 }
 
-/* CONTROL PANEL */
 .control-panel{
   background:rgba(7,21,37,.94);
   border:1px solid var(--line);
@@ -259,7 +262,6 @@ body{
   cursor:pointer;
 }
 
-/* CONTENT */
 .content{
   display:grid;
   grid-template-rows:auto auto 1fr;
@@ -274,7 +276,6 @@ body{
   min-height:0;
 }
 
-/* MOTOR CARD */
 .motor-card{
   background:#020617;
   border:1px solid var(--line);
@@ -341,7 +342,6 @@ body{
     drop-shadow(0 0 12px #f9731655);
 }
 
-/* FAN */
 #motor1Card{
   --fan-x:49%;
   --fan-y:65%;
@@ -386,7 +386,6 @@ body{
   to{transform:rotate(360deg)}
 }
 
-/* MOTOR STATUS */
 .status-side{
   display:flex;
   flex-direction:column;
@@ -474,7 +473,6 @@ body{
 .sensor-state.high{color:var(--orange)}
 .sensor-state.critical{color:var(--red)}
 
-/* LIMITS PANEL */
 .limits-panel{
   background:linear-gradient(180deg,#071525,#040a13);
   border:1px solid var(--line);
@@ -538,7 +536,6 @@ body{
   text-align:right;
 }
 
-/* EVENTS */
 .events{
   background:linear-gradient(180deg,#071525,#040a13);
   border:1px solid var(--line);
@@ -585,7 +582,6 @@ th{
 .level.high{color:var(--orange)}
 .level.critical{color:var(--red)}
 
-/* MODAL */
 .modal{
   position:fixed;
   inset:0;
@@ -654,7 +650,6 @@ th{
 .save{background:var(--green);color:white}
 .close{background:#334155;color:white}
 
-/* DANGER MESSAGE */
 .danger-overlay{
   position:fixed;
   inset:0;
@@ -709,9 +704,7 @@ th{
   }
 }
 
-/* TABLET / PHONE */
 @media (max-width:900px){
-
   .dashboard{
     height:auto;
     min-height:100vh;
@@ -725,7 +718,6 @@ th{
   }
 
   .brand{justify-content:center}
-
   .brand h1{font-size:26px}
   .brand p{font-size:14px}
 
@@ -814,9 +806,7 @@ th{
   }
 }
 
-/* SMALL PHONES */
 @media (max-width:520px){
-
   .dashboard{
     padding:8px;
   }
@@ -934,6 +924,15 @@ th{
       <div>
         <small>SYSTEM STATUS</small>
         <strong id="systemStatus">NORMAL</strong>
+      </div>
+    </div>
+
+    <div class="top-card">
+      <div id="espDot" class="dot warn"></div>
+      <div>
+        <small>ESP32 CONNECTION</small>
+        <strong id="espStatus">WAITING</strong>
+        <small id="espInfo">--</small>
       </div>
     </div>
 
@@ -1228,13 +1227,19 @@ const defaults = {
   sensors:{tempM1:0,tempM2:0,humidityM2:0},
   limits:{limitTempM1:50,limitTempM2:50,limitHumidityM2:70},
   feedback:{m1Run:false,m2Run:false,fault:false},
-  faults:{faultM1:false,faultM2:false,m2TempHigh:false,m2HumidityHigh:false,message:"NORMAL"}
+  faults:{faultM1:false,faultM2:false,m2TempHigh:false,m2HumidityHigh:false,message:"NORMAL"},
+  connection:{espOnline:false,lastSeen:0,ip:"--",wifiRSSI:0,uptimeSec:0}
 };
 
 let state = JSON.parse(JSON.stringify(defaults));
+let lastFirebaseUpdateTime = Date.now();
 
 function $(id){
   return document.getElementById(id);
+}
+
+function markFirebaseUpdated(){
+  lastFirebaseUpdateTime = Date.now();
 }
 
 async function initDatabase(){
@@ -1244,19 +1249,6 @@ async function initDatabase(){
   if(!snap.exists()){
     await set(mainRef, defaults);
     await logEvent("System", "Database initialized automatically", "NORMAL");
-  }else{
-    const data = snap.val() || {};
-    const updates = {};
-
-    if(!data.control) updates["control"] = defaults.control;
-    if(!data.sensors) updates["sensors"] = defaults.sensors;
-    if(!data.limits) updates["limits"] = defaults.limits;
-    if(!data.feedback) updates["feedback"] = defaults.feedback;
-    if(!data.faults) updates["faults"] = defaults.faults;
-
-    if(Object.keys(updates).length > 0){
-      await update(mainRef, updates);
-    }
   }
 }
 
@@ -1375,6 +1367,34 @@ window.clearEvents = async function(){
   await logEvent("System", "Events cleared from Web", "NORMAL");
 };
 
+function updateConnectionStatus(connection){
+  const now = Date.now();
+  const lastSeen = Number(connection.lastSeen || 0);
+
+  const isOnline =
+    connection.espOnline === true &&
+    lastSeen > 0 &&
+    Math.abs(now - lastSeen) < 15000;
+
+  const dot = $("espDot");
+  const status = $("espStatus");
+  const info = $("espInfo");
+
+  if(isOnline){
+    dot.className = "dot on";
+    status.textContent = "CONNECTED";
+
+    const rssi = Number(connection.wifiRSSI || 0);
+    const ip = connection.ip || "--";
+
+    info.textContent = `${ip} | ${rssi} dBm`;
+  }else{
+    dot.className = "dot crit";
+    status.textContent = "DISCONNECTED";
+    info.textContent = "No update from ESP32";
+  }
+}
+
 function updateDangerMessage(feedback,faults){
   const overlay = $("dangerOverlay");
   const msgEl = $("dangerMessage");
@@ -1401,6 +1421,9 @@ function updateUI(){
   const l = state.limits;
   const f = state.feedback;
   const faults = state.faults;
+  const connection = state.connection;
+
+  updateConnectionStatus(connection);
 
   $("systemKnob").style.setProperty("--angle", c.system ? "0deg" : "90deg");
   $("systemOnText").classList.toggle("active", c.system);
@@ -1470,6 +1493,8 @@ function updateUI(){
 }
 
 onValue(ref(db, BASE), snap => {
+  markFirebaseUpdated();
+
   const data = snap.val() || {};
 
   state = {
@@ -1477,7 +1502,8 @@ onValue(ref(db, BASE), snap => {
     sensors:{...defaults.sensors, ...(data.sensors || {})},
     limits:{...defaults.limits, ...(data.limits || {})},
     feedback:{...defaults.feedback, ...(data.feedback || {})},
-    faults:{...defaults.faults, ...(data.faults || {})}
+    faults:{...defaults.faults, ...(data.faults || {})},
+    connection:{...defaults.connection, ...(data.connection || {})}
   };
 
   updateUI();
@@ -1486,6 +1512,8 @@ onValue(ref(db, BASE), snap => {
 const eventsQuery = query(ref(db, `${BASE}/events`), limitToLast(150));
 
 onValue(eventsQuery, snap => {
+  markFirebaseUpdated();
+
   const rows = [];
 
   snap.forEach(child => {
@@ -1506,6 +1534,20 @@ onValue(eventsQuery, snap => {
     `;
   }).join("");
 });
+
+document.addEventListener("visibilitychange", () => {
+  if(!document.hidden){
+    updateUI();
+  }
+});
+
+setInterval(() => {
+  const diff = Date.now() - lastFirebaseUpdateTime;
+
+  if(diff > 60000){
+    location.reload();
+  }
+}, 15000);
 
 initDatabase();
 </script>
