@@ -48,6 +48,7 @@ body{
   gap:12px;
 }
 
+/* HEADER */
 .header{
   display:grid;
   grid-template-columns:1fr auto auto auto auto;
@@ -122,6 +123,7 @@ body{
 .dot.high{background:var(--orange);box-shadow:0 0 14px var(--orange)}
 .dot.crit{background:var(--red);box-shadow:0 0 14px var(--red)}
 
+/* MAIN */
 .main{
   display:grid;
   grid-template-columns:340px 1fr;
@@ -129,6 +131,7 @@ body{
   min-height:0;
 }
 
+/* CONTROL PANEL */
 .control-panel{
   background:rgba(7,21,37,.94);
   border:1px solid var(--line);
@@ -262,6 +265,7 @@ body{
   cursor:pointer;
 }
 
+/* CONTENT */
 .content{
   display:grid;
   grid-template-rows:auto auto 1fr;
@@ -276,6 +280,7 @@ body{
   min-height:0;
 }
 
+/* MOTOR CARD */
 .motor-card{
   background:#020617;
   border:1px solid var(--line);
@@ -342,6 +347,7 @@ body{
     drop-shadow(0 0 12px #f9731655);
 }
 
+/* FAN */
 #motor1Card{
   --fan-x:49%;
   --fan-y:65%;
@@ -386,6 +392,7 @@ body{
   to{transform:rotate(360deg)}
 }
 
+/* MOTOR STATUS */
 .status-side{
   display:flex;
   flex-direction:column;
@@ -473,6 +480,7 @@ body{
 .sensor-state.high{color:var(--orange)}
 .sensor-state.critical{color:var(--red)}
 
+/* LIMITS PANEL */
 .limits-panel{
   background:linear-gradient(180deg,#071525,#040a13);
   border:1px solid var(--line);
@@ -536,6 +544,7 @@ body{
   text-align:right;
 }
 
+/* EVENTS */
 .events{
   background:linear-gradient(180deg,#071525,#040a13);
   border:1px solid var(--line);
@@ -582,6 +591,7 @@ th{
 .level.high{color:var(--orange)}
 .level.critical{color:var(--red)}
 
+/* MODAL */
 .modal{
   position:fixed;
   inset:0;
@@ -650,6 +660,7 @@ th{
 .save{background:var(--green);color:white}
 .close{background:#334155;color:white}
 
+/* DANGER MESSAGE */
 .danger-overlay{
   position:fixed;
   inset:0;
@@ -704,7 +715,9 @@ th{
   }
 }
 
+/* TABLET / PHONE */
 @media (max-width:900px){
+
   .dashboard{
     height:auto;
     min-height:100vh;
@@ -806,7 +819,9 @@ th{
   }
 }
 
+/* SMALL PHONES */
 @media (max-width:520px){
+
   .dashboard{
     padding:8px;
   }
@@ -1223,7 +1238,7 @@ const db = getDatabase(app);
 const BASE = "sisMiniFactory";
 
 const defaults = {
-  control:{system:false,mode:"manual",motor:"M1",command:"none"},
+  control:{system:false,mode:"manual",motor:"M1",command:"none",commandId:"0"},
   sensors:{tempM1:0,tempM2:0,humidityM2:0},
   limits:{limitTempM1:50,limitTempM2:50,limitHumidityM2:70},
   feedback:{m1Run:false,m2Run:false,fault:false},
@@ -1297,12 +1312,14 @@ async function writeControl(key,value){
 }
 
 window.sendCommand = async function(cmd){
-  await set(ref(db, `${BASE}/control/command`), cmd);
-  await logEvent("Web", `Command ${cmd.toUpperCase()} from Web`, "NORMAL");
+  const commandId = String(Date.now());
 
-  setTimeout(() => {
-    set(ref(db, `${BASE}/control/command`), "none");
-  }, 900);
+  await update(ref(db, `${BASE}/control`), {
+    command: cmd,
+    commandId: commandId
+  });
+
+  await logEvent("Web", `Command ${cmd.toUpperCase()} from Web`, "NORMAL");
 };
 
 $("systemKnob").onclick = () => {
@@ -1386,8 +1403,9 @@ function updateConnectionStatus(connection){
 
     const rssi = Number(connection.wifiRSSI || 0);
     const ip = connection.ip || "--";
+    const uptime = Number(connection.uptimeSec || 0);
 
-    info.textContent = `${ip} | ${rssi} dBm`;
+    info.textContent = `${ip} | ${rssi} dBm | ${uptime}s`;
   }else{
     dot.className = "dot crit";
     status.textContent = "DISCONNECTED";
