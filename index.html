@@ -3,11 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-
 <title>SIS MINI FACTORY</title>
 
 <style>
@@ -48,7 +46,6 @@ body{
   gap:12px;
 }
 
-/* HEADER */
 .header{
   display:grid;
   grid-template-columns:1fr auto auto auto auto;
@@ -61,490 +58,102 @@ body{
   box-shadow:0 0 22px #0008;
 }
 
-.brand{
-  display:flex;
-  align-items:center;
-  gap:14px;
-}
-
-.logo{
-  width:48px;
-  height:48px;
-  border-radius:14px;
-  display:grid;
-  place-items:center;
-  font-size:32px;
-  color:#93c5fd;
-}
-
-.brand h1{
-  font-size:30px;
-  letter-spacing:.5px;
-}
-
-.brand p{
-  color:#cbd5e1;
-  font-size:15px;
-}
+.brand{display:flex;align-items:center;gap:14px}
+.logo{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;font-size:32px;color:#93c5fd}
+.brand h1{font-size:30px;letter-spacing:.5px}
+.brand p{color:#cbd5e1;font-size:15px}
 
 .top-card{
-  min-width:170px;
-  height:58px;
-  border:1px solid var(--line);
-  background:#0b1b2e;
-  border-radius:10px;
-  padding:8px 12px;
-  display:flex;
-  align-items:center;
-  gap:10px;
+  min-width:170px;height:58px;border:1px solid var(--line);background:#0b1b2e;
+  border-radius:10px;padding:8px 12px;display:flex;align-items:center;gap:10px;
 }
+.top-card small{color:#94a3b8;font-size:11px;display:block}
+.top-card strong{display:block;font-size:15px}
 
-.top-card small{
-  color:#94a3b8;
-  font-size:11px;
-  display:block;
-}
-
-.top-card strong{
-  display:block;
-  font-size:15px;
-}
-
-.dot{
-  width:16px;
-  height:16px;
-  border-radius:50%;
-  background:#64748b;
-  box-shadow:0 0 12px #64748b;
-}
-
+.dot{width:16px;height:16px;border-radius:50%;background:#64748b;box-shadow:0 0 12px #64748b}
 .dot.on{background:var(--green);box-shadow:0 0 14px var(--green)}
 .dot.warn{background:var(--yellow);box-shadow:0 0 14px var(--yellow)}
 .dot.high{background:var(--orange);box-shadow:0 0 14px var(--orange)}
 .dot.crit{background:var(--red);box-shadow:0 0 14px var(--red)}
 
-/* MAIN */
-.main{
-  display:grid;
-  grid-template-columns:340px 1fr;
-  gap:12px;
-  min-height:0;
-}
+.main{display:grid;grid-template-columns:340px 1fr;gap:12px;min-height:0}
 
-/* CONTROL PANEL */
 .control-panel{
-  background:rgba(7,21,37,.94);
-  border:1px solid var(--line);
-  border-radius:16px;
-  padding:14px;
-  box-shadow:0 0 24px #0008;
-  display:flex;
-  flex-direction:column;
-  gap:13px;
-  min-height:0;
+  background:rgba(7,21,37,.94);border:1px solid var(--line);border-radius:16px;padding:14px;
+  box-shadow:0 0 24px #0008;display:flex;flex-direction:column;gap:13px;min-height:0;
 }
+.section-title{color:var(--blue);font-size:18px;font-weight:800;letter-spacing:.5px;margin-bottom:4px}
 
-.section-title{
-  color:var(--blue);
-  font-size:18px;
-  font-weight:800;
-  letter-spacing:.5px;
-  margin-bottom:4px;
-}
-
-.selector-card{
-  background:linear-gradient(180deg,#0d2135,#081827);
-  border:1px solid #1e3a5f;
-  border-radius:14px;
-  padding:12px;
-  min-height:112px;
-}
-
-.selector-card h3{
-  text-align:center;
-  font-size:15px;
-  margin-bottom:8px;
-}
-
-.selector-content{
-  display:grid;
-  grid-template-columns:1fr 94px 1fr;
-  align-items:center;
-  gap:5px;
-}
-
-.selector-option{
-  text-align:center;
-  font-size:13px;
-  font-weight:800;
-  color:#cbd5e1;
-}
-
-.selector-option.active{
-  color:#67ff5a;
-}
-
-.selector-light{
-  width:15px;
-  height:15px;
-  margin:6px auto 0;
-  border-radius:50%;
-  border:2px solid #94a3b8;
-}
-
-.selector-option.active .selector-light{
-  background:var(--green);
-  border:none;
-  box-shadow:0 0 12px var(--green);
-}
-
+.selector-card{background:linear-gradient(180deg,#0d2135,#081827);border:1px solid #1e3a5f;border-radius:14px;padding:12px;min-height:112px}
+.selector-card h3{text-align:center;font-size:15px;margin-bottom:8px}
+.selector-content{display:grid;grid-template-columns:1fr 94px 1fr;align-items:center;gap:5px}
+.selector-option{text-align:center;font-size:13px;font-weight:800;color:#cbd5e1}
+.selector-option.active{color:#67ff5a}
+.selector-light{width:15px;height:15px;margin:6px auto 0;border-radius:50%;border:2px solid #94a3b8}
+.selector-option.active .selector-light{background:var(--green);border:none;box-shadow:0 0 12px var(--green)}
 .knob{
-  width:82px;
-  height:82px;
-  margin:auto;
-  border-radius:50%;
-  background:
-    radial-gradient(circle,#1f2937 0 35%,#090f18 36% 58%,#334155 60% 65%,#020617 70%);
-  border:3px solid #64748b;
-  position:relative;
-  cursor:pointer;
-  box-shadow:inset 0 0 16px #000,0 0 14px #0008;
+  width:82px;height:82px;margin:auto;border-radius:50%;
+  background:radial-gradient(circle,#1f2937 0 35%,#090f18 36% 58%,#334155 60% 65%,#020617 70%);
+  border:3px solid #64748b;position:relative;cursor:pointer;box-shadow:inset 0 0 16px #000,0 0 14px #0008;
 }
-
 .knob::before{
-  content:"";
-  position:absolute;
-  width:8px;
-  height:58px;
-  background:#facc15;
-  border-radius:8px;
-  left:50%;
-  top:10px;
-  transform:translateX(-50%) rotate(var(--angle,0deg));
-  transform-origin:center 31px;
-  box-shadow:0 0 8px #facc15;
+  content:"";position:absolute;width:8px;height:58px;background:#facc15;border-radius:8px;left:50%;top:10px;
+  transform:translateX(-50%) rotate(var(--angle,0deg));transform-origin:center 31px;box-shadow:0 0 8px #facc15;
 }
 
 .btn{
-  border:none;
-  height:60px;
-  border-radius:12px;
-  color:white;
-  font-size:24px;
-  font-weight:900;
-  cursor:pointer;
-  letter-spacing:.5px;
-  box-shadow:inset 0 0 10px #ffffff33,0 0 12px #0008;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:12px;
-  transition:.12s;
+  border:none;height:60px;border-radius:12px;color:white;font-size:24px;font-weight:900;cursor:pointer;letter-spacing:.5px;
+  box-shadow:inset 0 0 10px #ffffff33,0 0 12px #0008;display:flex;align-items:center;justify-content:center;gap:12px;transition:.12s;
 }
-
 .btn:active{transform:scale(.97)}
-
 .btn-start{background:linear-gradient(180deg,#38a83d,#167a22)}
 .btn-stop{background:linear-gradient(180deg,#ff4b26,#b91c1c)}
 .btn-reset{background:linear-gradient(180deg,#facc15,#c28100)}
+.small-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:auto}
+.small-btn{height:42px;border-radius:10px;border:1px solid #1e3a5f;background:#0b1b2e;color:#dbeafe;font-weight:800;cursor:pointer}
 
-.small-btns{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-  margin-top:auto;
-}
+.content{display:grid;grid-template-rows:auto auto 1fr;gap:12px;min-height:0}
+.motors{display:grid;grid-template-columns:1fr 1fr;gap:12px;min-height:0}
 
-.small-btn{
-  height:42px;
-  border-radius:10px;
-  border:1px solid #1e3a5f;
-  background:#0b1b2e;
-  color:#dbeafe;
-  font-weight:800;
-  cursor:pointer;
-}
-
-/* CONTENT */
-.content{
-  display:grid;
-  grid-template-rows:auto auto 1fr;
-  gap:12px;
-  min-height:0;
-}
-
-.motors{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
-  min-height:0;
-}
-
-/* MOTOR CARD */
 .motor-card{
-  background:#020617;
-  border:1px solid var(--line);
-  border-radius:16px;
-  padding:14px;
-  display:grid;
-  grid-template-columns:1fr 230px;
-  gap:14px;
-  min-height:0;
-  position:relative;
-  box-shadow:inset 0 0 30px #000a,0 0 18px #0008;
+  background:#020617;border:1px solid var(--line);border-radius:16px;padding:14px;display:grid;grid-template-columns:1fr 230px;
+  gap:14px;min-height:0;position:relative;box-shadow:inset 0 0 30px #000a,0 0 18px #0008;
 }
+.motor-title{font-size:24px;font-weight:900;margin-bottom:8px;text-align:center}
+.motor-title.m1{color:#38bdf8}.motor-title.m2{color:#fb923c}
+.motor-img-box{background:#000;border:1px solid #05070b;border-radius:18px;min-height:330px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;box-shadow:inset 0 0 45px #000,0 0 18px #0008}
+.motor-img-wrap{width:100%;height:100%;min-height:330px;display:flex;align-items:center;justify-content:center;position:relative;background:#000;border-radius:16px;overflow:hidden}
+.motor-img{width:96%;max-width:360px;height:auto;object-fit:contain;display:block;filter:drop-shadow(0 0 16px #000) drop-shadow(0 0 10px #0ea5e955)}
+.motor2 .motor-img{filter:drop-shadow(0 0 16px #000) drop-shadow(0 0 12px #f9731655)}
 
-.motor-title{
-  font-size:24px;
-  font-weight:900;
-  margin-bottom:8px;
-  text-align:center;
-}
+#motor1Card{--fan-x:49%;--fan-y:65%;--fan-size:150px}
+#motor2Card{--fan-x:49%;--fan-y:65%;--fan-size:150px}
+.fan-holder{position:absolute;left:var(--fan-x);top:var(--fan-y);width:var(--fan-size);height:var(--fan-size);transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;z-index:8;pointer-events:none}
+.fan-img{width:100%;height:100%;object-fit:contain;display:block;filter:drop-shadow(0 0 16px rgba(255,255,255,.22));transform-origin:50% 50%}
+.running .fan-img{animation:fanSpin .6s linear infinite}
+@keyframes fanSpin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 
-.motor-title.m1{color:#38bdf8}
-.motor-title.m2{color:#fb923c}
+.status-side{display:flex;flex-direction:column;gap:10px;justify-content:center}
+.status-row{background:#0b1b2e;border:1px solid #1e3a5f;border-radius:10px;padding:10px 12px}
+.status-flex{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.status-label{display:flex;align-items:center;gap:8px;font-weight:800;font-size:14px}
+.value{font-size:22px;font-weight:900}
+.no-fault{color:#67ff5a;font-weight:900}
+.level-bar{margin-top:8px;height:10px;border-radius:8px;background:linear-gradient(90deg,var(--green) 0 25%,var(--yellow) 25% 50%,var(--orange) 50% 75%,var(--red) 75% 100%);position:relative}
+.pointer{position:absolute;top:-9px;left:var(--pos,30%);width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-top:9px solid #fff}
+.level-labels{display:flex;justify-content:space-between;font-size:10px;font-weight:800;margin-top:7px}
+.level-labels span:nth-child(1){color:var(--green)}.level-labels span:nth-child(2){color:var(--yellow)}.level-labels span:nth-child(3){color:var(--orange)}.level-labels span:nth-child(4){color:var(--red)}
+.sensor-state{text-align:center;margin-top:8px;font-size:18px;font-weight:900}
+.sensor-state.normal{color:var(--green)}.sensor-state.warning{color:var(--yellow)}.sensor-state.high{color:var(--orange)}.sensor-state.critical{color:var(--red)}
 
-.motor-img-box{
-  background:#000;
-  border:1px solid #05070b;
-  border-radius:18px;
-  min-height:330px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  position:relative;
-  overflow:hidden;
-  box-shadow:inset 0 0 45px #000,0 0 18px #0008;
-}
+.limits-panel{background:linear-gradient(180deg,#071525,#040a13);border:1px solid var(--line);border-radius:16px;padding:12px;box-shadow:inset 0 0 20px #0008}
+.limits-panel h3{color:var(--blue);margin-bottom:10px;font-size:18px}
+.limits-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.limit-box{background:linear-gradient(180deg,#081827,#050d17);border:1px solid var(--line);border-radius:14px;padding:14px 12px;box-shadow:inset 0 0 18px #0008;min-height:105px;display:flex;flex-direction:column;justify-content:space-between}
+.limit-label{color:#93c5fd;font-size:14px;font-weight:900;line-height:1.35}.limit-label span{color:#cbd5e1;font-size:13px;font-weight:700}
+.limit-number{font-size:32px;font-weight:900;color:#fff}.limit-unit{font-size:18px;color:#cbd5e1}.limit-footer{color:var(--yellow);font-size:13px;font-weight:900;text-align:right}
 
-.motor-img-wrap{
-  width:100%;
-  height:100%;
-  min-height:330px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  position:relative;
-  background:#000;
-  border-radius:16px;
-  overflow:hidden;
-}
-
-.motor-img{
-  width:96%;
-  max-width:360px;
-  height:auto;
-  object-fit:contain;
-  display:block;
-  filter:
-    drop-shadow(0 0 16px #000)
-    drop-shadow(0 0 10px #0ea5e955);
-}
-
-.motor2 .motor-img{
-  filter:
-    drop-shadow(0 0 16px #000)
-    drop-shadow(0 0 12px #f9731655);
-}
-
-/* FAN */
-#motor1Card{
-  --fan-x:49%;
-  --fan-y:65%;
-  --fan-size:150px;
-}
-
-#motor2Card{
-  --fan-x:49%;
-  --fan-y:65%;
-  --fan-size:150px;
-}
-
-.fan-holder{
-  position:absolute;
-  left:var(--fan-x);
-  top:var(--fan-y);
-  width:var(--fan-size);
-  height:var(--fan-size);
-  transform:translate(-50%,-50%);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  z-index:8;
-  pointer-events:none;
-}
-
-.fan-img{
-  width:100%;
-  height:100%;
-  object-fit:contain;
-  display:block;
-  filter:drop-shadow(0 0 16px rgba(255,255,255,.22));
-  transform-origin:50% 50%;
-}
-
-.running .fan-img{
-  animation:fanSpin .6s linear infinite;
-}
-
-@keyframes fanSpin{
-  from{transform:rotate(0deg)}
-  to{transform:rotate(360deg)}
-}
-
-/* MOTOR STATUS */
-.status-side{
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-  justify-content:center;
-}
-
-.status-row{
-  background:#0b1b2e;
-  border:1px solid #1e3a5f;
-  border-radius:10px;
-  padding:10px 12px;
-}
-
-.status-flex{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:8px;
-}
-
-.status-label{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  font-weight:800;
-  font-size:14px;
-}
-
-.value{
-  font-size:22px;
-  font-weight:900;
-}
-
-.no-fault{
-  color:#67ff5a;
-  font-weight:900;
-}
-
-.level-bar{
-  margin-top:8px;
-  height:10px;
-  border-radius:8px;
-  background:linear-gradient(90deg,
-    var(--green) 0 25%,
-    var(--yellow) 25% 50%,
-    var(--orange) 50% 75%,
-    var(--red) 75% 100%);
-  position:relative;
-}
-
-.pointer{
-  position:absolute;
-  top:-9px;
-  left:var(--pos,30%);
-  width:0;
-  height:0;
-  border-left:6px solid transparent;
-  border-right:6px solid transparent;
-  border-top:9px solid #fff;
-}
-
-.level-labels{
-  display:flex;
-  justify-content:space-between;
-  font-size:10px;
-  font-weight:800;
-  margin-top:7px;
-}
-
-.level-labels span:nth-child(1){color:var(--green)}
-.level-labels span:nth-child(2){color:var(--yellow)}
-.level-labels span:nth-child(3){color:var(--orange)}
-.level-labels span:nth-child(4){color:var(--red)}
-
-.sensor-state{
-  text-align:center;
-  margin-top:8px;
-  font-size:18px;
-  font-weight:900;
-}
-
-.sensor-state.normal{color:var(--green)}
-.sensor-state.warning{color:var(--yellow)}
-.sensor-state.high{color:var(--orange)}
-.sensor-state.critical{color:var(--red)}
-
-/* LIMITS PANEL */
-.limits-panel{
-  background:linear-gradient(180deg,#071525,#040a13);
-  border:1px solid var(--line);
-  border-radius:16px;
-  padding:12px;
-  box-shadow:inset 0 0 20px #0008;
-}
-
-.limits-panel h3{
-  color:var(--blue);
-  margin-bottom:10px;
-  font-size:18px;
-}
-
-.limits-row{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:10px;
-}
-
-.limit-box{
-  background:linear-gradient(180deg,#081827,#050d17);
-  border:1px solid var(--line);
-  border-radius:14px;
-  padding:14px 12px;
-  box-shadow:inset 0 0 18px #0008;
-  min-height:105px;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-}
-
-.limit-label{
-  color:#93c5fd;
-  font-size:14px;
-  font-weight:900;
-  line-height:1.35;
-}
-
-.limit-label span{
-  color:#cbd5e1;
-  font-size:13px;
-  font-weight:700;
-}
-
-.limit-number{
-  font-size:32px;
-  font-weight:900;
-  color:#ffffff;
-}
-
-.limit-unit{
-  font-size:18px;
-  color:#cbd5e1;
-}
-
-.limit-footer{
-  color:var(--yellow);
-  font-size:13px;
-  font-weight:900;
-  text-align:right;
-}
-
-/* EVENTS */
+/* NEW EVENTS REGISTER */
 .events{
   background:linear-gradient(180deg,#071525,#040a13);
   border:1px solid var(--line);
@@ -555,673 +164,114 @@ body{
   flex-direction:column;
   box-shadow:inset 0 0 25px #0008;
 }
-
-.events h3{
-  color:var(--blue);
-  margin-bottom:8px;
-}
-
-.table-wrap{
-  overflow:auto;
-  min-height:0;
-  max-height:360px;
-}
-
-table{
-  width:100%;
-  border-collapse:collapse;
-  font-size:14px;
-}
-
-th,td{
-  padding:8px 10px;
-  border-bottom:1px solid #1e293b;
-  text-align:left;
-  color:#dbeafe;
-}
-
-th{
-  color:#94a3b8;
-  font-size:12px;
-}
-
-.level{font-weight:900}
-.level.normal{color:var(--green)}
-.level.warning{color:var(--yellow)}
-.level.high{color:var(--orange)}
-.level.critical{color:var(--red)}
-
-/* MODAL */
-.modal{
-  position:fixed;
-  inset:0;
-  background:#0009;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  z-index:2000;
-}
-
-.modal.show{display:flex}
-
-.modal-box{
-  width:min(520px,90vw);
-  background:#071525;
-  border:1px solid #38bdf8;
-  border-radius:18px;
-  padding:20px;
-  box-shadow:0 0 30px #38bdf855;
-}
-
-.modal-box h2{
-  color:#facc15;
-  margin-bottom:15px;
-}
-
-.input-row{
-  display:grid;
-  grid-template-columns:1fr 140px;
-  gap:10px;
-  align-items:center;
-  margin:10px 0;
-}
-
-.input-row label{
-  color:#cbd5e1;
-  font-weight:700;
-}
-
-.input-row input{
-  height:40px;
-  border-radius:8px;
-  border:1px solid #1e3a5f;
-  background:#0b1b2e;
-  color:white;
-  padding:0 10px;
-  font-size:18px;
-}
-
-.modal-actions{
-  margin-top:18px;
-  display:flex;
-  justify-content:flex-end;
-  gap:10px;
-}
-
-.modal-actions button{
-  height:40px;
-  border:none;
-  border-radius:8px;
-  padding:0 18px;
-  font-weight:900;
-  cursor:pointer;
-}
-
-.save{background:var(--green);color:white}
-.close{background:#334155;color:white}
-
-/* DANGER MESSAGE */
-.danger-overlay{
-  position:fixed;
-  inset:0;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  background:rgba(0,0,0,.35);
-  z-index:3000;
-  pointer-events:none;
-}
-
-.danger-overlay.show{display:flex}
-
-.danger-box{
-  width:min(920px,92vw);
-  padding:24px 30px;
-  border-radius:22px;
-  border:3px solid #ff3b30;
-  background:linear-gradient(180deg,rgba(90,0,0,.92),rgba(25,0,0,.95));
-  box-shadow:0 0 35px rgba(255,0,0,.5);
-  text-align:center;
-  animation:alarmBlink 1s infinite;
-}
-
-.danger-title{
-  font-size:28px;
-  font-weight:900;
-  color:#fff;
-  margin-bottom:10px;
-  letter-spacing:1px;
-}
-
-.danger-message{
-  font-size:42px;
-  font-weight:900;
-  color:#ffd9d9;
-  text-transform:uppercase;
-  line-height:1.2;
-  text-shadow:0 0 12px rgba(255,255,255,.25);
-}
-
-@keyframes alarmBlink{
-  0%,100%{
-    opacity:1;
-    transform:scale(1);
-    box-shadow:0 0 35px rgba(255,0,0,.55);
-  }
-  50%{
-    opacity:.55;
-    transform:scale(1.02);
-    box-shadow:0 0 50px rgba(255,120,120,.85);
-  }
-}
-
-/* TABLET / PHONE */
-@media (max-width:900px){
-
-  .dashboard{
-    height:auto;
-    min-height:100vh;
-    padding:10px;
-  }
-
-  .header{
-    grid-template-columns:1fr;
-    gap:10px;
-    text-align:center;
-  }
-
-  .brand{justify-content:center}
-  .brand h1{font-size:26px}
-  .brand p{font-size:14px}
-
-  .top-card{
-    width:100%;
-    justify-content:center;
-  }
-
-  .main{
-    grid-template-columns:1fr;
-    height:auto;
-  }
-
-  .control-panel{width:100%}
-
-  .content{
-    display:flex;
-    flex-direction:column;
-    height:auto;
-  }
-
-  .motors{
-    grid-template-columns:1fr;
-  }
-
-  .motor-card{
-    grid-template-columns:1fr;
-    text-align:center;
-  }
-
-  .motor-img-box{
-    min-height:350px;
-  }
-
-  .motor-img-wrap{
-    min-height:350px;
-  }
-
-  .motor-img{
-    max-width:300px;
-  }
-
-  .status-side{
-    width:100%;
-  }
-
-  .limits-row{
-    grid-template-columns:repeat(3,1fr);
-  }
-
-  .limit-number{
-    font-size:26px;
-  }
-
-  .limit-label{
-    font-size:12px;
-  }
-
-  .events{
-    min-height:320px;
-  }
-
-  .table-wrap{
-    max-height:330px;
-    overflow:auto;
-  }
-
-  #motor1Card{
-    --fan-x:49%;
-    --fan-y:65%;
-    --fan-size:142px;
-  }
-
-  #motor2Card{
-    --fan-x:49%;
-    --fan-y:65%;
-    --fan-size:142px;
-  }
-
-  .danger-title{
-    font-size:24px;
-  }
-
-  .danger-message{
-    font-size:30px;
-  }
-}
-
-/* SMALL PHONES */
-@media (max-width:520px){
-
-  .dashboard{
-    padding:8px;
-  }
-
-  .brand h1{
-    font-size:22px;
-  }
-
-  .logo{
-    width:42px;
-    height:42px;
-    font-size:26px;
-  }
-
-  .selector-card{
-    min-height:auto;
-  }
-
-  .selector-content{
-    grid-template-columns:1fr 80px 1fr;
-  }
-
-  .knob{
-    width:70px;
-    height:70px;
-  }
-
-  .knob::before{
-    height:48px;
-    top:9px;
-    transform-origin:center 26px;
-  }
-
-  .btn{
-    height:56px;
-    font-size:20px;
-  }
-
-  .motor-img-box{
-    min-height:330px;
-  }
-
-  .motor-img-wrap{
-    min-height:330px;
-  }
-
-  .motor-img{
-    max-width:295px;
-    width:100%;
-  }
-
-  #motor1Card{
-    --fan-x:49%;
-    --fan-y:65%;
-    --fan-size:136px;
-  }
-
-  #motor2Card{
-    --fan-x:49%;
-    --fan-y:65%;
-    --fan-size:136px;
-  }
-
-  .limits-row{
-    grid-template-columns:1fr;
-  }
-
-  .limit-box{
-    min-height:90px;
-  }
-
-  .limit-number{
-    font-size:30px;
-  }
-
-  th,td{
-    font-size:12px;
-    padding:7px 6px;
-  }
-
-  .input-row{
-    grid-template-columns:1fr;
-  }
-
-  .danger-box{
-    padding:18px 16px;
-  }
-
-  .danger-title{
-    font-size:20px;
-  }
-
-  .danger-message{
-    font-size:24px;
-  }
-}
+.events-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
+.events h3{color:var(--blue);font-size:18px}
+.events-count{font-size:12px;color:#94a3b8;font-weight:800;border:1px solid #1e3a5f;border-radius:999px;padding:5px 10px;background:#0b1b2e}
+.events-list{overflow:auto;min-height:0;max-height:380px;padding-right:4px;display:flex;flex-direction:column;gap:10px}
+.event-card{display:grid;grid-template-columns:96px 1fr;gap:10px;padding:12px;border-radius:18px;background:linear-gradient(135deg,rgba(15,30,50,.96),rgba(3,10,20,.98));border:1px solid rgba(56,189,248,.15);box-shadow:0 10px 20px rgba(0,0,0,.24)}
+.event-card.normal{border-color:rgba(34,197,94,.22)}
+.event-card.warning,.event-card.high{border-color:rgba(250,204,21,.35);box-shadow:0 0 18px rgba(250,204,21,.08)}
+.event-card.critical{border-color:rgba(239,68,68,.48);box-shadow:0 0 20px rgba(239,68,68,.16)}
+.event-time{display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:14px;background:rgba(2,6,23,.68);border:1px solid rgba(148,163,184,.14);padding:8px 5px;text-align:center}
+.event-time .hour{font-size:15px;font-weight:900;color:#f8fafc}.event-time .date{font-size:11px;color:#94a3b8;margin-top:5px}
+.event-main{min-width:0}
+.event-top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px}
+.event-source{font-size:13px;font-weight:900;color:#e2e8f0;display:flex;align-items:center;gap:7px}
+.event-badge{font-size:11px;font-weight:900;padding:4px 9px;border-radius:999px;white-space:nowrap;border:1px solid #334155;background:#0f172a}
+.event-badge.normal{color:#bbf7d0;background:rgba(22,163,74,.18);border-color:rgba(34,197,94,.35)}
+.event-badge.warning{color:#fef08a;background:rgba(202,138,4,.16);border-color:rgba(234,179,8,.35)}
+.event-badge.high{color:#fed7aa;background:rgba(249,115,22,.16);border-color:rgba(249,115,22,.38)}
+.event-badge.critical{color:#fecaca;background:rgba(220,38,38,.20);border-color:rgba(239,68,68,.45)}
+.event-message{font-size:13px;line-height:1.5;color:#cbd5e1;word-break:break-word}
+.event-reason{margin-top:7px;font-size:12px;color:#93c5fd;background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.16);border-radius:10px;padding:6px 8px;line-height:1.4}
+.event-empty{padding:22px;text-align:center;color:#94a3b8;border-radius:18px;background:rgba(2,6,23,.35);border:1px dashed rgba(148,163,184,.22)}
+
+.modal{position:fixed;inset:0;background:#0009;display:none;align-items:center;justify-content:center;z-index:2000}.modal.show{display:flex}
+.modal-box{width:min(520px,90vw);background:#071525;border:1px solid #38bdf8;border-radius:18px;padding:20px;box-shadow:0 0 30px #38bdf855}.modal-box h2{color:#facc15;margin-bottom:15px}
+.input-row{display:grid;grid-template-columns:1fr 140px;gap:10px;align-items:center;margin:10px 0}.input-row label{color:#cbd5e1;font-weight:700}.input-row input{height:40px;border-radius:8px;border:1px solid #1e3a5f;background:#0b1b2e;color:white;padding:0 10px;font-size:18px}
+.modal-actions{margin-top:18px;display:flex;justify-content:flex-end;gap:10px}.modal-actions button{height:40px;border:none;border-radius:8px;padding:0 18px;font-weight:900;cursor:pointer}.save{background:var(--green);color:white}.close{background:#334155;color:white}
+
+.danger-overlay{position:fixed;inset:0;background:rgba(0,0,0,.35);display:none;align-items:center;justify-content:center;z-index:3000;pointer-events:none}.danger-overlay.show{display:flex}
+.danger-box{width:min(920px,92vw);padding:24px 30px;border-radius:22px;border:3px solid #ff3b30;background:linear-gradient(180deg,rgba(90,0,0,.92),rgba(25,0,0,.95));box-shadow:0 0 35px rgba(255,0,0,.5);text-align:center;animation:alarmBlink 1s infinite}
+.danger-title{font-size:28px;font-weight:900;color:#fff;margin-bottom:10px;letter-spacing:1px}.danger-message{font-size:42px;font-weight:900;color:#ffd9d9;text-transform:uppercase;line-height:1.2;text-shadow:0 0 12px rgba(255,255,255,.25)}
+@keyframes alarmBlink{0%,100%{opacity:1;transform:scale(1);box-shadow:0 0 35px rgba(255,0,0,.55)}50%{opacity:.55;transform:scale(1.02);box-shadow:0 0 50px rgba(255,120,120,.85)}}
+
+@media(max-width:900px){.dashboard{height:auto;min-height:100vh;padding:10px}.header{grid-template-columns:1fr;gap:10px;text-align:center}.brand{justify-content:center}.brand h1{font-size:26px}.brand p{font-size:14px}.top-card{width:100%;justify-content:center}.main{grid-template-columns:1fr;height:auto}.control-panel{width:100%}.content{display:flex;flex-direction:column;height:auto}.motors{grid-template-columns:1fr}.motor-card{grid-template-columns:1fr;text-align:center}.motor-img-box,.motor-img-wrap{min-height:350px}.motor-img{max-width:300px}.status-side{width:100%}.limits-row{grid-template-columns:repeat(3,1fr)}.limit-number{font-size:26px}.limit-label{font-size:12px}.events{min-height:320px}.events-list{max-height:360px}#motor1Card,#motor2Card{--fan-x:49%;--fan-y:65%;--fan-size:142px}.danger-title{font-size:24px}.danger-message{font-size:30px}}
+@media(max-width:520px){.dashboard{padding:8px}.brand h1{font-size:22px}.logo{width:42px;height:42px;font-size:26px}.selector-card{min-height:auto}.selector-content{grid-template-columns:1fr 80px 1fr}.knob{width:70px;height:70px}.knob::before{height:48px;top:9px;transform-origin:center 26px}.btn{height:56px;font-size:20px}.motor-img-box,.motor-img-wrap{min-height:330px}.motor-img{max-width:295px;width:100%}#motor1Card,#motor2Card{--fan-x:49%;--fan-y:65%;--fan-size:136px}.limits-row{grid-template-columns:1fr}.limit-box{min-height:90px}.limit-number{font-size:30px}.event-card{grid-template-columns:1fr}.event-time{flex-direction:row;gap:8px;justify-content:flex-start}.input-row{grid-template-columns:1fr}.danger-box{padding:18px 16px}.danger-title{font-size:20px}.danger-message{font-size:24px}}
 </style>
 </head>
 
 <body>
-
 <div class="dashboard">
-
   <header class="header">
     <div class="brand">
       <div class="logo">⚙️</div>
-      <div>
-        <h1>SIS MINI FACTORY</h1>
-        <p>Smart Industrial Supervision</p>
-      </div>
+      <div><h1>SIS MINI FACTORY</h1><p>Smart Industrial Supervision</p></div>
     </div>
-
-    <div class="top-card">
-      <div id="sysDot" class="dot on"></div>
-      <div>
-        <small>SYSTEM STATUS</small>
-        <strong id="systemStatus">NORMAL</strong>
-      </div>
-    </div>
-
-    <div class="top-card">
-      <div id="espDot" class="dot warn"></div>
-      <div>
-        <small>ESP32 CONNECTION</small>
-        <strong id="espStatus">WAITING</strong>
-        <small id="espInfo">--</small>
-      </div>
-    </div>
-
-    <div class="top-card">
-      <div style="font-size:26px;">🕒</div>
-      <div>
-        <strong id="clock">--:--:--</strong>
-        <small id="date">--</small>
-      </div>
-    </div>
-
-    <div class="top-card">
-      <div style="font-size:25px;">👤</div>
-      <div>
-        <strong>Operator</strong>
-        <small>Level 2</small>
-      </div>
-    </div>
+    <div class="top-card"><div id="sysDot" class="dot on"></div><div><small>SYSTEM STATUS</small><strong id="systemStatus">NORMAL</strong></div></div>
+    <div class="top-card"><div id="espDot" class="dot warn"></div><div><small>ESP32 CONNECTION</small><strong id="espStatus">WAITING</strong><small id="espInfo">--</small></div></div>
+    <div class="top-card"><div style="font-size:26px;">🕒</div><div><strong id="clock">--:--:--</strong><small id="date">--</small></div></div>
+    <div class="top-card"><div style="font-size:25px;">👤</div><div><strong>Operator</strong><small>Level 2</small></div></div>
   </header>
 
   <main class="main">
-
     <aside class="control-panel">
       <div class="section-title">☷ CONTROL PANEL</div>
-
-      <div class="selector-card">
-        <h3>SYSTEM</h3>
-        <div class="selector-content">
-          <div id="systemOnText" class="selector-option active">
-            ON<div class="selector-light"></div>
-          </div>
-          <div id="systemKnob" class="knob" style="--angle:0deg"></div>
-          <div id="systemOffText" class="selector-option">
-            OFF<div class="selector-light"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="selector-card">
-        <h3>MODE</h3>
-        <div class="selector-content">
-          <div id="manualText" class="selector-option">
-            MANUAL<div class="selector-light"></div>
-          </div>
-          <div id="modeKnob" class="knob" style="--angle:0deg"></div>
-          <div id="autoText" class="selector-option active">
-            AUTO<div class="selector-light"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="selector-card">
-        <h3>MOTOR</h3>
-        <div class="selector-content">
-          <div id="m1Text" class="selector-option active">
-            MOTOR 1<div class="selector-light"></div>
-          </div>
-          <div id="motorKnob" class="knob" style="--angle:0deg"></div>
-          <div id="m2Text" class="selector-option">
-            MOTOR 2<div class="selector-light"></div>
-          </div>
-        </div>
-      </div>
-
+      <div class="selector-card"><h3>SYSTEM</h3><div class="selector-content"><div id="systemOnText" class="selector-option active">ON<div class="selector-light"></div></div><div id="systemKnob" class="knob" style="--angle:0deg"></div><div id="systemOffText" class="selector-option">OFF<div class="selector-light"></div></div></div></div>
+      <div class="selector-card"><h3>MODE</h3><div class="selector-content"><div id="manualText" class="selector-option">MANUAL<div class="selector-light"></div></div><div id="modeKnob" class="knob" style="--angle:0deg"></div><div id="autoText" class="selector-option active">AUTO<div class="selector-light"></div></div></div></div>
+      <div class="selector-card"><h3>MOTOR</h3><div class="selector-content"><div id="m1Text" class="selector-option active">MOTOR 1<div class="selector-light"></div></div><div id="motorKnob" class="knob" style="--angle:0deg"></div><div id="m2Text" class="selector-option">MOTOR 2<div class="selector-light"></div></div></div></div>
       <button class="btn btn-start" onclick="sendCommand('start')">▶ START</button>
       <button class="btn btn-stop" onclick="sendCommand('stop')">■ STOP</button>
       <button class="btn btn-reset" onclick="sendCommand('reset')">↻ RESET</button>
-
-      <div class="small-btns">
-        <button class="small-btn" onclick="openSettings()">SETTINGS</button>
-        <button class="small-btn" onclick="clearEvents()">CLEAR LOG</button>
-      </div>
+      <div class="small-btns"><button class="small-btn" onclick="openSettings()">SETTINGS</button><button class="small-btn" onclick="clearEvents()">CLEAR LOG</button></div>
     </aside>
 
     <section class="content">
-
       <div class="motors">
-
         <div id="motor1Card" class="motor-card">
-          <div class="motor-img-box">
-            <div class="motor-img-wrap">
-              <div>
-                <div class="motor-title m1">MOTOR 1</div>
-                <img class="motor-img" src="motor1.png" alt="Motor 1">
-              </div>
-
-              <div class="fan-holder">
-                <img class="fan-img" src="fan.png" alt="Fan 1">
-              </div>
-            </div>
-          </div>
-
+          <div class="motor-img-box"><div class="motor-img-wrap"><div><div class="motor-title m1">MOTOR 1</div><img class="motor-img" src="motor1.png" alt="Motor 1"></div><div class="fan-holder"><img class="fan-img" src="fan.png" alt="Fan 1"></div></div></div>
           <div class="status-side">
-            <div class="status-row status-flex">
-              <div class="status-label"><span id="m1Dot" class="dot"></span>RUN</div>
-              <div id="m1RunText" class="no-fault">STOP</div>
-            </div>
-
-            <div class="status-row">
-              <div class="status-flex">
-                <div class="status-label">🌡 TEMP</div>
-                <div class="value"><span id="tempM1">--</span> °C</div>
-              </div>
-              <div class="level-bar">
-                <div id="tempM1Pointer" class="pointer" style="--pos:0%"></div>
-              </div>
-              <div class="level-labels">
-                <span>NORMAL</span><span>WARNING</span><span>HIGH</span><span>CRITICAL</span>
-              </div>
-              <div id="tempM1State" class="sensor-state normal">NORMAL</div>
-            </div>
-
-            <div class="status-row status-flex">
-              <div class="status-label">🛡 FAULT</div>
-              <div id="faultM1Text" class="no-fault">NO FAULT</div>
-            </div>
+            <div class="status-row status-flex"><div class="status-label"><span id="m1Dot" class="dot"></span>RUN</div><div id="m1RunText" class="no-fault">STOP</div></div>
+            <div class="status-row"><div class="status-flex"><div class="status-label">🌡 TEMP</div><div class="value"><span id="tempM1">--</span> °C</div></div><div class="level-bar"><div id="tempM1Pointer" class="pointer" style="--pos:0%"></div></div><div class="level-labels"><span>NORMAL</span><span>WARNING</span><span>HIGH</span><span>CRITICAL</span></div><div id="tempM1State" class="sensor-state normal">NORMAL</div></div>
+            <div class="status-row status-flex"><div class="status-label">🛡 FAULT</div><div id="faultM1Text" class="no-fault">NO FAULT</div></div>
           </div>
         </div>
 
         <div id="motor2Card" class="motor-card motor2">
-          <div class="motor-img-box">
-            <div class="motor-img-wrap">
-              <div>
-                <div class="motor-title m2">MOTOR 2</div>
-                <img class="motor-img" src="motor2.png" alt="Motor 2">
-              </div>
-
-              <div class="fan-holder">
-                <img class="fan-img" src="fan.png" alt="Fan 2">
-              </div>
-            </div>
-          </div>
-
+          <div class="motor-img-box"><div class="motor-img-wrap"><div><div class="motor-title m2">MOTOR 2</div><img class="motor-img" src="motor2.png" alt="Motor 2"></div><div class="fan-holder"><img class="fan-img" src="fan.png" alt="Fan 2"></div></div></div>
           <div class="status-side">
-            <div class="status-row status-flex">
-              <div class="status-label"><span id="m2Dot" class="dot"></span>RUN</div>
-              <div id="m2RunText" class="no-fault">STOP</div>
-            </div>
-
-            <div class="status-row">
-              <div class="status-flex">
-                <div class="status-label">🌡 TEMP</div>
-                <div class="value"><span id="tempM2">--</span> °C</div>
-              </div>
-              <div class="level-bar">
-                <div id="tempM2Pointer" class="pointer" style="--pos:0%"></div>
-              </div>
-              <div class="level-labels">
-                <span>NORMAL</span><span>WARNING</span><span>HIGH</span><span>CRITICAL</span>
-              </div>
-              <div id="tempM2State" class="sensor-state normal">NORMAL</div>
-            </div>
-
-            <div class="status-row">
-              <div class="status-flex">
-                <div class="status-label">💧 HUMIDITY</div>
-                <div class="value"><span id="humM2">--</span> %</div>
-              </div>
-              <div class="level-bar">
-                <div id="humM2Pointer" class="pointer" style="--pos:0%"></div>
-              </div>
-              <div class="level-labels">
-                <span>NORMAL</span><span>WARNING</span><span>HIGH</span><span>CRITICAL</span>
-              </div>
-              <div id="humM2State" class="sensor-state normal">NORMAL</div>
-            </div>
-
-            <div class="status-row status-flex">
-              <div class="status-label">🛡 FAULT</div>
-              <div id="faultM2Text" class="no-fault">NO FAULT</div>
-            </div>
+            <div class="status-row status-flex"><div class="status-label"><span id="m2Dot" class="dot"></span>RUN</div><div id="m2RunText" class="no-fault">STOP</div></div>
+            <div class="status-row"><div class="status-flex"><div class="status-label">🌡 TEMP</div><div class="value"><span id="tempM2">--</span> °C</div></div><div class="level-bar"><div id="tempM2Pointer" class="pointer" style="--pos:0%"></div></div><div class="level-labels"><span>NORMAL</span><span>WARNING</span><span>HIGH</span><span>CRITICAL</span></div><div id="tempM2State" class="sensor-state normal">NORMAL</div></div>
+            <div class="status-row"><div class="status-flex"><div class="status-label">💧 HUMIDITY</div><div class="value"><span id="humM2">--</span> %</div></div><div class="level-bar"><div id="humM2Pointer" class="pointer" style="--pos:0%"></div></div><div class="level-labels"><span>NORMAL</span><span>WARNING</span><span>HIGH</span><span>CRITICAL</span></div><div id="humM2State" class="sensor-state normal">NORMAL</div></div>
+            <div class="status-row status-flex"><div class="status-label">🛡 FAULT</div><div id="faultM2Text" class="no-fault">NO FAULT</div></div>
           </div>
         </div>
-
       </div>
 
       <div class="limits-panel">
         <h3>⚙ LIMITS PANEL</h3>
-
         <div class="limits-row">
-          <div class="limit-box">
-            <div class="limit-label">TEMP LIMIT 1<br><span>MOTOR 1</span></div>
-            <div class="limit-number">
-              <span id="limitTempM1View">--</span><span class="limit-unit"> °C</span>
-            </div>
-            <div class="limit-footer">LIMIT</div>
-          </div>
-
-          <div class="limit-box">
-            <div class="limit-label">TEMP LIMIT 2<br><span>MOTOR 2</span></div>
-            <div class="limit-number">
-              <span id="limitTempM2View">--</span><span class="limit-unit"> °C</span>
-            </div>
-            <div class="limit-footer">LIMIT</div>
-          </div>
-
-          <div class="limit-box">
-            <div class="limit-label">HUMIDITY LIMIT<br><span>MOTOR 2</span></div>
-            <div class="limit-number">
-              <span id="limitHumM2View">--</span><span class="limit-unit"> %</span>
-            </div>
-            <div class="limit-footer">LIMIT</div>
-          </div>
+          <div class="limit-box"><div class="limit-label">TEMP LIMIT 1<br><span>MOTOR 1</span></div><div class="limit-number"><span id="limitTempM1View">--</span><span class="limit-unit"> °C</span></div><div class="limit-footer">LIMIT</div></div>
+          <div class="limit-box"><div class="limit-label">TEMP LIMIT 2<br><span>MOTOR 2</span></div><div class="limit-number"><span id="limitTempM2View">--</span><span class="limit-unit"> °C</span></div><div class="limit-footer">LIMIT</div></div>
+          <div class="limit-box"><div class="limit-label">HUMIDITY LIMIT<br><span>MOTOR 2</span></div><div class="limit-number"><span id="limitHumM2View">--</span><span class="limit-unit"> %</span></div><div class="limit-footer">LIMIT</div></div>
         </div>
       </div>
 
       <div class="events">
-        <h3>▤ EVENTS REGISTER</h3>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>TIME</th>
-                <th>DATE</th>
-                <th>SOURCE</th>
-                <th>MESSAGE</th>
-                <th>LEVEL</th>
-              </tr>
-            </thead>
-            <tbody id="eventsBody"></tbody>
-          </table>
-        </div>
+        <div class="events-head"><h3>▤ EVENTS REGISTER</h3><span id="eventsCount" class="events-count">0 events</span></div>
+        <div id="eventsList" class="events-list"><div class="event-empty">No events yet</div></div>
       </div>
-
     </section>
   </main>
 </div>
 
-<div id="dangerOverlay" class="danger-overlay">
-  <div class="danger-box">
-    <div class="danger-title">⚠ ACTIVE ALARM</div>
-    <div id="dangerMessage" class="danger-message">PLC FAULT ACTIVE</div>
-  </div>
-</div>
+<div id="dangerOverlay" class="danger-overlay"><div class="danger-box"><div class="danger-title">⚠ ACTIVE ALARM</div><div id="dangerMessage" class="danger-message">PLC FAULT ACTIVE</div></div></div>
 
-<div id="settingsModal" class="modal">
-  <div class="modal-box">
-    <h2>Limits Settings</h2>
-
-    <div class="input-row">
-      <label>Motor 1 Temp Limit °C</label>
-      <input id="inputLimitTempM1" type="number" step="0.1">
-    </div>
-
-    <div class="input-row">
-      <label>Motor 2 Temp Limit °C</label>
-      <input id="inputLimitTempM2" type="number" step="0.1">
-    </div>
-
-    <div class="input-row">
-      <label>Motor 2 Humidity Limit %</label>
-      <input id="inputLimitHumM2" type="number" step="1">
-    </div>
-
-    <div class="modal-actions">
-      <button class="close" onclick="closeSettings()">CLOSE</button>
-      <button class="save" onclick="saveLimits()">SAVE</button>
-    </div>
-  </div>
-</div>
+<div id="settingsModal" class="modal"><div class="modal-box"><h2>Limits Settings</h2><div class="input-row"><label>Motor 1 Temp Limit °C</label><input id="inputLimitTempM1" type="number" step="0.1"></div><div class="input-row"><label>Motor 2 Temp Limit °C</label><input id="inputLimitTempM2" type="number" step="0.1"></div><div class="input-row"><label>Motor 2 Humidity Limit %</label><input id="inputLimitHumM2" type="number" step="1"></div><div class="modal-actions"><button class="close" onclick="closeSettings()">CLOSE</button><button class="save" onclick="saveLimits()">SAVE</button></div></div></div>
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
-import {
-  getDatabase,
-  ref,
-  onValue,
-  set,
-  update,
-  push,
-  query,
-  limitToLast,
-  get
-} from "https://www.gstatic.com/firebasejs/12.15.0/firebase-database.js";
+import { getDatabase, ref, onValue, set, update, push, query, limitToLast, get } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-database.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyD75Ze_pjHYxfdyQ7NNJHPy67teS-AOtd8",
@@ -1249,326 +299,181 @@ const defaults = {
 let state = JSON.parse(JSON.stringify(defaults));
 let lastFirebaseUpdateTime = Date.now();
 
-function $(id){
-  return document.getElementById(id);
-}
-
-function markFirebaseUpdated(){
-  lastFirebaseUpdateTime = Date.now();
-}
+function $(id){return document.getElementById(id)}
+function markFirebaseUpdated(){lastFirebaseUpdateTime = Date.now()}
+function escapeHTML(value){return String(value ?? "").replace(/[&<>'"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[c]))}
 
 async function initDatabase(){
   const mainRef = ref(db, BASE);
   const snap = await get(mainRef);
-
   if(!snap.exists()){
     await set(mainRef, defaults);
     await logEvent("System", "Database initialized automatically", "NORMAL");
   }
 }
 
-function nowParts(){
-  const d = new Date();
-  return {
-    time:d.toLocaleTimeString("en-GB"),
-    date:d.toLocaleDateString("en-GB")
-  };
-}
+function nowParts(){const d = new Date();return {time:d.toLocaleTimeString("en-GB"),date:d.toLocaleDateString("en-GB")}}
 
 function levelFromValue(value, limit){
   if(limit <= 0) return {name:"NORMAL", cls:"normal", pos:0};
-
   const p = Math.max(0, Math.min(100, (value / limit) * 100));
-
   if(p < 60) return {name:"NORMAL", cls:"normal", pos:p};
   if(p < 80) return {name:"WARNING", cls:"warning", pos:p};
   if(p < 100) return {name:"HIGH", cls:"high", pos:p};
-
   return {name:"CRITICAL", cls:"critical", pos:100};
 }
+function setPointer(id,pos){const el=$(id);if(el) el.style.setProperty("--pos",`${Math.max(0,Math.min(100,pos))}%`)}
+function updateClock(){const d=new Date();$("clock").textContent=d.toLocaleTimeString("en-GB");$("date").textContent=d.toLocaleDateString("en-GB",{day:"2-digit",month:"short",year:"numeric"})}
+setInterval(updateClock,1000);updateClock();
 
-function setPointer(id,pos){
-  const el = $(id);
-  if(el) el.style.setProperty("--pos", `${Math.max(0,Math.min(100,pos))}%`);
-}
-
-function updateClock(){
-  const d = new Date();
-
-  $("clock").textContent = d.toLocaleTimeString("en-GB");
-
-  $("date").textContent = d.toLocaleDateString("en-GB", {
-    day:"2-digit",
-    month:"short",
-    year:"numeric"
-  });
-}
-
-setInterval(updateClock,1000);
-updateClock();
-
-async function writeControl(key,value){
-  await set(ref(db, `${BASE}/control/${key}`), value);
-}
+async function writeControl(key,value){await set(ref(db,`${BASE}/control/${key}`),value)}
 
 window.sendCommand = async function(cmd){
   const commandId = String(Date.now());
-
-  await update(ref(db, `${BASE}/control`), {
-    command: cmd,
-    commandId: commandId
-  });
-
+  await update(ref(db, `${BASE}/control`), {command: cmd, commandId: commandId});
   await logEvent("Web", `Command ${cmd.toUpperCase()} from Web`, "NORMAL");
 };
 
-$("systemKnob").onclick = () => {
-  const next = !state.control.system;
-  writeControl("system", next);
-  logEvent("Web", next ? "SYSTEM ON from Web" : "SYSTEM OFF from Web", "NORMAL");
-};
+$("systemKnob").onclick=()=>{const next=!state.control.system;writeControl("system",next);logEvent("Web",next?"SYSTEM ON from Web":"SYSTEM OFF from Web","NORMAL")};
+$("modeKnob").onclick=()=>{const next=state.control.mode==="auto"?"manual":"auto";writeControl("mode",next);logEvent("Web",`MODE changed to ${next.toUpperCase()} from Web`,"NORMAL")};
+$("motorKnob").onclick=()=>{const next=state.control.motor==="M1"?"M2":"M1";writeControl("motor",next);logEvent("Web",`MOTOR selected ${next} from Web`,"NORMAL")};
 
-$("modeKnob").onclick = () => {
-  const next = state.control.mode === "auto" ? "manual" : "auto";
-  writeControl("mode", next);
-  logEvent("Web", `MODE changed to ${next.toUpperCase()} from Web`, "NORMAL");
-};
-
-$("motorKnob").onclick = () => {
-  const next = state.control.motor === "M1" ? "M2" : "M1";
-  writeControl("motor", next);
-  logEvent("Web", `MOTOR selected ${next} from Web`, "NORMAL");
-};
-
-window.openSettings = function(){
-  $("inputLimitTempM1").value = state.limits.limitTempM1;
-  $("inputLimitTempM2").value = state.limits.limitTempM2;
-  $("inputLimitHumM2").value = state.limits.limitHumidityM2;
+window.openSettings=function(){
+  $("inputLimitTempM1").value=state.limits.limitTempM1;
+  $("inputLimitTempM2").value=state.limits.limitTempM2;
+  $("inputLimitHumM2").value=state.limits.limitHumidityM2;
   $("settingsModal").classList.add("show");
 };
-
-window.closeSettings = function(){
-  $("settingsModal").classList.remove("show");
-};
-
-window.saveLimits = async function(){
-  const limitTempM1 = parseFloat($("inputLimitTempM1").value || 50);
-  const limitTempM2 = parseFloat($("inputLimitTempM2").value || 50);
-  const limitHumidityM2 = parseFloat($("inputLimitHumM2").value || 70);
-
-  await update(ref(db, `${BASE}/limits`), {
-    limitTempM1,
-    limitTempM2,
-    limitHumidityM2
-  });
-
-  await logEvent("Web", "Limits updated from Web", "NORMAL");
+window.closeSettings=function(){$("settingsModal").classList.remove("show")};
+window.saveLimits=async function(){
+  const limitTempM1=parseFloat($("inputLimitTempM1").value||50);
+  const limitTempM2=parseFloat($("inputLimitTempM2").value||50);
+  const limitHumidityM2=parseFloat($("inputLimitHumM2").value||70);
+  await update(ref(db,`${BASE}/limits`),{limitTempM1,limitTempM2,limitHumidityM2});
+  await logEvent("Web","Limits updated from Web","NORMAL");
   closeSettings();
 };
 
 async function logEvent(source,message,level="NORMAL"){
-  const n = nowParts();
-
-  await push(ref(db, `${BASE}/events`), {
-    time:n.time,
-    date:n.date,
-    source,
-    message,
-    level,
-    timestamp:Date.now()
-  });
+  const n=nowParts();
+  await push(ref(db,`${BASE}/events`),{time:n.time,date:n.date,source,message,level,timestamp:Date.now()});
 }
-
-window.clearEvents = async function(){
-  await set(ref(db, `${BASE}/events`), null);
-  await logEvent("System", "Events cleared from Web", "NORMAL");
-};
+window.clearEvents=async function(){await set(ref(db,`${BASE}/events`),null);await logEvent("System","Events cleared from Web","NORMAL")};
 
 function updateConnectionStatus(connection){
-  const now = Date.now();
-  const lastSeen = Number(connection.lastSeen || 0);
+  const now=Date.now();const lastSeen=Number(connection.lastSeen||0);
+  const isOnline=connection.espOnline===true && lastSeen>0 && Math.abs(now-lastSeen)<15000;
+  const dot=$("espDot"), status=$("espStatus"), info=$("espInfo");
+  if(isOnline){dot.className="dot on";status.textContent="CONNECTED";info.textContent=`${connection.ip||"--"} | ${Number(connection.wifiRSSI||0)} dBm | ${Number(connection.uptimeSec||0)}s`}
+  else{dot.className="dot crit";status.textContent="DISCONNECTED";info.textContent="No update from ESP32"}
+}
 
-  const isOnline =
-    connection.espOnline === true &&
-    lastSeen > 0 &&
-    Math.abs(now - lastSeen) < 15000;
-
-  const dot = $("espDot");
-  const status = $("espStatus");
-  const info = $("espInfo");
-
-  if(isOnline){
-    dot.className = "dot on";
-    status.textContent = "CONNECTED";
-
-    const rssi = Number(connection.wifiRSSI || 0);
-    const ip = connection.ip || "--";
-    const uptime = Number(connection.uptimeSec || 0);
-
-    info.textContent = `${ip} | ${rssi} dBm | ${uptime}s`;
-  }else{
-    dot.className = "dot crit";
-    status.textContent = "DISCONNECTED";
-    info.textContent = "No update from ESP32";
-  }
+function getM2FaultReason(faults, sensors, limits){
+  const reasons=[];
+  if(faults.m2TempHigh) reasons.push(`High temperature: ${Number(sensors.tempM2||0).toFixed(1)} °C / limit ${Number(limits.limitTempM2||50).toFixed(1)} °C`);
+  if(faults.m2HumidityHigh) reasons.push(`High humidity: ${Number(sensors.humidityM2||0).toFixed(0)} % / limit ${Number(limits.limitHumidityM2||70).toFixed(0)} %`);
+  return reasons.join(" | ");
 }
 
 function updateDangerMessage(feedback,faults){
-  const overlay = $("dangerOverlay");
-  const msgEl = $("dangerMessage");
-
-  const faultActive = feedback && feedback.fault === true;
-
-  if(faultActive){
-    let msg = "PLC FAULT ACTIVE";
-
-    if(faults && faults.message && faults.message !== "NORMAL"){
-      msg = faults.message;
-    }
-
-    msgEl.textContent = msg;
-    overlay.classList.add("show");
-  }else{
-    overlay.classList.remove("show");
-  }
+  const overlay=$("dangerOverlay"), msgEl=$("dangerMessage");
+  const faultActive=feedback && feedback.fault===true;
+  if(faultActive){let msg="PLC FAULT ACTIVE";if(faults&&faults.message&&faults.message!=="NORMAL") msg=faults.message;msgEl.textContent=msg;overlay.classList.add("show")}
+  else overlay.classList.remove("show");
 }
 
 function updateUI(){
-  const c = state.control;
-  const s = state.sensors;
-  const l = state.limits;
-  const f = state.feedback;
-  const faults = state.faults;
-  const connection = state.connection;
-
+  const c=state.control,s=state.sensors,l=state.limits,f=state.feedback,faults=state.faults,connection=state.connection;
   updateConnectionStatus(connection);
-
-  $("systemKnob").style.setProperty("--angle", c.system ? "0deg" : "90deg");
-  $("systemOnText").classList.toggle("active", c.system);
-  $("systemOffText").classList.toggle("active", !c.system);
-
-  const auto = c.mode === "auto";
-  $("modeKnob").style.setProperty("--angle", auto ? "0deg" : "90deg");
-  $("autoText").classList.toggle("active", auto);
-  $("manualText").classList.toggle("active", !auto);
-
-  const m2 = c.motor === "M2";
-  $("motorKnob").style.setProperty("--angle", m2 ? "90deg" : "0deg");
-  $("m1Text").classList.toggle("active", !m2);
-  $("m2Text").classList.toggle("active", m2);
-
-  $("motor1Card").classList.toggle("running", !!f.m1Run);
-  $("motor2Card").classList.toggle("running", !!f.m2Run);
-
-  $("m1Dot").className = "dot " + (f.m1Run ? "on" : "");
-  $("m2Dot").className = "dot " + (f.m2Run ? "on" : "");
-
-  $("m1RunText").textContent = f.m1Run ? "RUN" : "STOP";
-  $("m2RunText").textContent = f.m2Run ? "RUN" : "STOP";
-
-  let sysClass = "on";
-  let sysText = "NORMAL";
-
-  if(f.fault){
-    sysClass = "crit";
-    sysText = "PLC FAULT";
-  }
-
-  $("sysDot").className = "dot " + sysClass;
-  $("systemStatus").textContent = sysText;
-
-  $("tempM1").textContent = Number(s.tempM1 || 0).toFixed(1);
-  $("tempM2").textContent = Number(s.tempM2 || 0).toFixed(1);
-  $("humM2").textContent = Number(s.humidityM2 || 0).toFixed(0);
-
-  $("limitTempM1View").textContent = Number(l.limitTempM1 || 50).toFixed(1);
-  $("limitTempM2View").textContent = Number(l.limitTempM2 || 50).toFixed(1);
-  $("limitHumM2View").textContent = Number(l.limitHumidityM2 || 70).toFixed(0);
-
-  const lev1 = levelFromValue(Number(s.tempM1 || 0), Number(l.limitTempM1 || 50));
-  const lev2 = levelFromValue(Number(s.tempM2 || 0), Number(l.limitTempM2 || 50));
-  const levH = levelFromValue(Number(s.humidityM2 || 0), Number(l.limitHumidityM2 || 70));
-
-  setPointer("tempM1Pointer", lev1.pos);
-  setPointer("tempM2Pointer", lev2.pos);
-  setPointer("humM2Pointer", levH.pos);
-
-  $("tempM1State").textContent = lev1.name;
-  $("tempM2State").textContent = lev2.name;
-  $("humM2State").textContent = levH.name;
-
-  $("tempM1State").className = "sensor-state " + lev1.cls;
-  $("tempM2State").className = "sensor-state " + lev2.cls;
-  $("humM2State").className = "sensor-state " + levH.cls;
-
-  $("faultM1Text").textContent = faults.faultM1 ? "FAULT" : "NO FAULT";
-  $("faultM1Text").style.color = faults.faultM1 ? "var(--red)" : "#67ff5a";
-
-  $("faultM2Text").textContent = faults.faultM2 ? "FAULT" : "NO FAULT";
-  $("faultM2Text").style.color = faults.faultM2 ? "var(--red)" : "#67ff5a";
-
-  updateDangerMessage(f, faults);
+  $("systemKnob").style.setProperty("--angle",c.system?"0deg":"90deg");$("systemOnText").classList.toggle("active",c.system);$("systemOffText").classList.toggle("active",!c.system);
+  const auto=c.mode==="auto";$("modeKnob").style.setProperty("--angle",auto?"0deg":"90deg");$("autoText").classList.toggle("active",auto);$("manualText").classList.toggle("active",!auto);
+  const m2=c.motor==="M2";$("motorKnob").style.setProperty("--angle",m2?"90deg":"0deg");$("m1Text").classList.toggle("active",!m2);$("m2Text").classList.toggle("active",m2);
+  $("motor1Card").classList.toggle("running",!!f.m1Run);$("motor2Card").classList.toggle("running",!!f.m2Run);
+  $("m1Dot").className="dot "+(f.m1Run?"on":"");$("m2Dot").className="dot "+(f.m2Run?"on":"");
+  $("m1RunText").textContent=f.m1Run?"RUN":"STOP";$("m2RunText").textContent=f.m2Run?"RUN":"STOP";
+  $("sysDot").className="dot "+(f.fault?"crit":"on");$("systemStatus").textContent=f.fault?"PLC FAULT":"NORMAL";
+  $("tempM1").textContent=Number(s.tempM1||0).toFixed(1);$("tempM2").textContent=Number(s.tempM2||0).toFixed(1);$("humM2").textContent=Number(s.humidityM2||0).toFixed(0);
+  $("limitTempM1View").textContent=Number(l.limitTempM1||50).toFixed(1);$("limitTempM2View").textContent=Number(l.limitTempM2||50).toFixed(1);$("limitHumM2View").textContent=Number(l.limitHumidityM2||70).toFixed(0);
+  const lev1=levelFromValue(Number(s.tempM1||0),Number(l.limitTempM1||50));const lev2=levelFromValue(Number(s.tempM2||0),Number(l.limitTempM2||50));const levH=levelFromValue(Number(s.humidityM2||0),Number(l.limitHumidityM2||70));
+  setPointer("tempM1Pointer",lev1.pos);setPointer("tempM2Pointer",lev2.pos);setPointer("humM2Pointer",levH.pos);
+  $("tempM1State").textContent=lev1.name;$("tempM2State").textContent=lev2.name;$("humM2State").textContent=levH.name;
+  $("tempM1State").className="sensor-state "+lev1.cls;$("tempM2State").className="sensor-state "+lev2.cls;$("humM2State").className="sensor-state "+levH.cls;
+  $("faultM1Text").textContent=faults.faultM1?"TEMP FAULT":"NO FAULT";$("faultM1Text").style.color=faults.faultM1?"var(--red)":"#67ff5a";
+  if(faults.faultM2){
+    if(faults.m2TempHigh && faults.m2HumidityHigh) $("faultM2Text").textContent="TEMP + HUM FAULT";
+    else if(faults.m2TempHigh) $("faultM2Text").textContent="TEMP FAULT";
+    else if(faults.m2HumidityHigh) $("faultM2Text").textContent="HUM FAULT";
+    else $("faultM2Text").textContent="FAULT";
+  }else $("faultM2Text").textContent="NO FAULT";
+  $("faultM2Text").style.color=faults.faultM2?"var(--red)":"#67ff5a";
+  updateDangerMessage(f,faults);
 }
 
-onValue(ref(db, BASE), snap => {
+function sourceIcon(source){
+  const s=String(source||"").toUpperCase();
+  if(s.includes("WEB")) return "🌐";
+  if(s.includes("ESP")) return "📡";
+  if(s.includes("PLC")) return "⚙️";
+  if(s.includes("ALARM")) return "🚨";
+  if(s.includes("SYSTEM")) return "🧾";
+  return "•";
+}
+
+function buildEventReason(e){
+  const msg=String(e.message||"").toUpperCase();
+  if(msg.includes("M2") && (msg.includes("FAULT") || msg.includes("ALARM"))){
+    const reason=getM2FaultReason(state.faults,state.sensors,state.limits);
+    if(reason) return reason;
+  }
+  return "";
+}
+
+function renderEvents(rows){
+  const list=$("eventsList"), count=$("eventsCount");
+  if(!list) return;
+  if(count) count.textContent=`${rows.length} events`;
+  if(!rows.length){list.innerHTML='<div class="event-empty">No events yet</div>';return;}
+  list.innerHTML=rows.map(e=>{
+    const level=String(e.level||"NORMAL").toLowerCase();
+    const cls=level==="critical"?"critical":level==="high"?"high":level==="warning"?"warning":"normal";
+    const reason=buildEventReason(e);
+    return `
+      <div class="event-card ${cls}">
+        <div class="event-time"><div class="hour">${escapeHTML(e.time||"--")}</div><div class="date">${escapeHTML(e.date||"--")}</div></div>
+        <div class="event-main">
+          <div class="event-top"><div class="event-source">${sourceIcon(e.source)} ${escapeHTML(e.source||"SYSTEM")}</div><div class="event-badge ${cls}">${escapeHTML(String(e.level||"NORMAL").toUpperCase())}</div></div>
+          <div class="event-message">${escapeHTML(e.message||"--")}</div>
+          ${reason ? `<div class="event-reason">Reason: ${escapeHTML(reason)}</div>` : ""}
+        </div>
+      </div>`;
+  }).join("");
+}
+
+onValue(ref(db,BASE),snap=>{
   markFirebaseUpdated();
-
-  const data = snap.val() || {};
-
-  state = {
-    control:{...defaults.control, ...(data.control || {})},
-    sensors:{...defaults.sensors, ...(data.sensors || {})},
-    limits:{...defaults.limits, ...(data.limits || {})},
-    feedback:{...defaults.feedback, ...(data.feedback || {})},
-    faults:{...defaults.faults, ...(data.faults || {})},
-    connection:{...defaults.connection, ...(data.connection || {})}
+  const data=snap.val()||{};
+  state={
+    control:{...defaults.control,...(data.control||{})},
+    sensors:{...defaults.sensors,...(data.sensors||{})},
+    limits:{...defaults.limits,...(data.limits||{})},
+    feedback:{...defaults.feedback,...(data.feedback||{})},
+    faults:{...defaults.faults,...(data.faults||{})},
+    connection:{...defaults.connection,...(data.connection||{})}
   };
-
   updateUI();
 });
 
-const eventsQuery = query(ref(db, `${BASE}/events`), limitToLast(150));
-
-onValue(eventsQuery, snap => {
+const eventsQuery=query(ref(db,`${BASE}/events`),limitToLast(150));
+onValue(eventsQuery,snap=>{
   markFirebaseUpdated();
-
-  const rows = [];
-
-  snap.forEach(child => {
-    rows.unshift(child.val());
-  });
-
-  $("eventsBody").innerHTML = rows.map(e => {
-    const level = String(e.level || "NORMAL").toLowerCase();
-
-    return `
-      <tr>
-        <td>${e.time || "--"}</td>
-        <td>${e.date || "--"}</td>
-        <td>${e.source || "--"}</td>
-        <td>${e.message || "--"}</td>
-        <td class="level ${level}">● ${e.level || "NORMAL"}</td>
-      </tr>
-    `;
-  }).join("");
+  const rows=[];
+  snap.forEach(child=>rows.unshift(child.val()));
+  renderEvents(rows);
 });
 
-document.addEventListener("visibilitychange", () => {
-  if(!document.hidden){
-    updateUI();
-  }
-});
-
-setInterval(() => {
-  const diff = Date.now() - lastFirebaseUpdateTime;
-
-  if(diff > 60000){
-    location.reload();
-  }
-}, 15000);
-
+document.addEventListener("visibilitychange",()=>{if(!document.hidden) updateUI()});
+setInterval(()=>{if(Date.now()-lastFirebaseUpdateTime>60000) location.reload()},15000);
 initDatabase();
 </script>
-
 </body>
 </html>
